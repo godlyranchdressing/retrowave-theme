@@ -1,0 +1,9 @@
+[X-GNOME-Metatheme]
+Name=Retrowave
+Type=X-GNOME-Metatheme
+Comment=GNOME Theme
+Encoding=UTF-8
+GtkTheme=Retrowave
+IconTheme=Retrowave
+CursorTheme=Retrowave
+CursorSize=24

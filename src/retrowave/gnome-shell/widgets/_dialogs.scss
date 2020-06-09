@@ -1,0 +1,214 @@
+/* Modal Dialogs */
+
+.headline {
+  @include fontsize($base_font_size + 1);
+}
+
+.modal-dialog {
+  border-radius: $modal_radius;
+  @extend %osd_panel;
+
+  .modal-dialog-content-box {
+    margin: 32px 40px;
+    spacing: 32px;
+    max-width: 28em;
+  }
+
+  .modal-dialog-linked-button {
+    &, &:hover, &:active {
+      background-color: transparent;
+      border: none;
+    }
+
+    &, &:hover, &:focus, &:active {
+      box-shadow: none;
+    }
+
+    border-image: url('assets/buttons/modal-dialog-button-middle.svg') 4;
+
+    &:hover, &:focus { border-image: url('assets/buttons/modal-dialog-button-middle-hover.svg') 4; }
+    &:active { border-image: url('assets/buttons/modal-dialog-button-middle-active.svg') 4; }
+    
+    &:insensitive, &:insensitive:focus {
+      color: $insensitive_fg_color;
+      border-image: url('assets/buttons/modal-dialog-button-middle-insensitive.svg') 4;
+    }
+
+    &:first-child, &:last-child {
+      border-radius: 0px;
+      border-image: url('assets/buttons/modal-dialog-button.svg') 4;
+      &:hover, &:focus { border-image: url('assets/buttons/modal-dialog-button-hover.svg') 4; }
+      &:active { border-image: url('assets/buttons/modal-dialog-button-active.svg') 4; }
+      &:insensitive, &:insensitive:focus { border-image: url('assets/buttons/modal-dialog-button-insensitive.svg') 4; }
+    }
+
+    &:last-child {
+      border-right-width: 0px;
+    }
+
+    &:first-child:last-child {
+      border-right-width: 0px;
+      border-radius: 0px 0px 2px 2px;
+      border-image: url('assets/buttons/modal-dialog-button.svg') 4;
+      &:hover, &:focus { border-image: url('assets/buttons/modal-dialog-button-hover.svg') 4; }
+      &:active { border-image: url('assets/buttons/modal-dialog-button-active.svg') 4; }
+      &:insensitive, &:insensitive:focus { border-image: url('assets/buttons/modal-dialog-button-insensitive.svg') 4; }
+    }
+  }
+}
+
+/* End Session Dialog */
+.end-session-dialog {
+  width: 30em;
+
+  .end-session-dialog-battery-warning,
+  .dialog-list-title {
+    color: $warning_color;
+  }
+
+  // Shutdown Button
+  .modal-dialog-linked-button:last-child {
+    border-image: url('assets/buttons/shutdown-button-border.svg') 4;
+    &:focus { border-image: url('assets/buttons/shutdown-button-border.svg') 4; }
+    &:hover { border-image: url('assets/buttons/shutdown-button-border-hover.svg') 4; }
+    &:active { border-image: url('assets/buttons/shutdown-button-border-active.svg') 4; }
+  }
+}
+
+/* Message Dialog */
+.message-dialog-content {
+  spacing: 18px;
+
+  .message-dialog-title {
+    text-align: center;
+    font-size: 18pt;
+    font-weight: 800;
+
+    &.leightweight {
+      font-size: 13pt;
+      font-weight: 800;
+    }
+  }
+  .message-dialog-description { text-align: center; }
+}
+
+/* Dialog List */
+.dialog-list {
+  spacing: 18px;
+
+  .dialog-list-title {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .dialog-list-scrollview { max-height: 200px; }
+  .dialog-list-box {
+    spacing: 1em;
+
+    .dialog-list-item {
+      spacing: 1em;
+
+      .dialog-list-item-title { font-weight: bold; }
+      .dialog-list-item-description {
+        color: darken($fg_color,5%);
+        @include fontsize($base_font_size - 1);
+      }
+    }
+  }
+}
+
+/* Run Dialog */
+.run-dialog {
+  .modal-dialog-content-box {
+    margin-top: 24px;
+    margin-bottom: 14px;
+  }
+  .run-dialog-entry { width: 20em; }
+  .run-dialog-description {
+    @include fontsize($base_font_size - 1);
+    text-align: center;
+    color: darken($fg_color, 20%);
+  }
+}
+
+/* Password or Authentication Dialog */
+
+.prompt-dialog {
+  width: 28em;
+
+  .modal-dialog-content-box {
+    margin-bottom: 24px;
+  }
+}
+
+.prompt-dialog-password-grid {
+  spacing-rows: 8px;
+  spacing-columns: 4px;
+
+  .prompt-dialog-password-entry {
+    width: auto;
+
+    // 4px (spacing) + 16px (spinner-width)
+    &:ltr { margin-left: 20px; }
+    &:rtl { margin-right: 20px; }
+  }
+}
+
+.prompt-dialog-password-layout {
+  spacing: 8px;
+}
+
+.prompt-dialog-password-entry {
+  width: 20em;
+}
+
+.prompt-dialog-error-label,
+.prompt-dialog-info-label,
+.prompt-dialog-null-label {
+  text-align: center;
+  @include fontsize($base_font_size - 1);
+}
+
+.prompt-dialog-error-label {
+  color: $warning_color;
+}
+
+
+/* Polkit Dialog */
+
+.polkit-dialog-user-layout {
+  text-align: center;
+  spacing: 8px;
+  margin-bottom: 6px;
+
+  .polkit-dialog-user-icon {
+    border-radius: 99px;
+    background-size: contain;
+  }
+  .polkit-dialog-user-root-label { color: $warning_color; }
+}
+
+/* Audio selection dialog */
+.audio-device-selection-dialog {
+  .modal-dialog-content-box { margin-bottom: 28px; }
+  .audio-selection-box { spacing: 20px; }
+}
+
+.audio-selection-device {
+  border: 1px solid $bubble_borders_color;
+  border-radius: 12px;
+  &:hover,&:focus { background-color: $hover_bg_color; }
+  &:active { 
+    background-color: $selected_bg_color;
+    color: $selected_fg_color;
+  }
+}
+
+.audio-selection-device-box {
+  padding: 20px;
+  spacing: 20px;
+}
+
+.audio-selection-device-icon {
+  icon-size: $base_icon_size * 4;
+}
