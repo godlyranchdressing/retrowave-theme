@@ -13,7 +13,7 @@
    id="svg4609"
    version="1.1"
    inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   sodipodi:docname="modal-dialog-button.svg">
+   sodipodi:docname="dialog-button-normal.svg">
   <defs
      id="defs4611">
     <clipPath
@@ -66,9 +66,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="4.2333339"
-     inkscape:cx="-13.047319"
-     inkscape:cy="26.299743"
+     inkscape:zoom="8.4666675"
+     inkscape:cx="19.047929"
+     inkscape:cy="49.008197"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -77,9 +77,9 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:window-width="1920"
-     inkscape:window-height="1044"
-     inkscape:window-x="1920"
-     inkscape:window-y="0"
+     inkscape:window-height="1173"
+     inkscape:window-x="-2"
+     inkscape:window-y="-11"
      inkscape:window-maximized="1"
      units="px"
      inkscape:snap-bbox="true"
@@ -126,13 +126,21 @@
            y="349.11819" />
         <path
            id="path883-7"
-           d="m 308.64412,350.11817 v 56"
-           style="fill:none;stroke:#4e3d69;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+           d="m 308.64412,350.11817 v 58"
+           style="fill:none;stroke:#4e3d69;stroke-width:2.0354;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
         <path
-           style="fill:none;stroke:#4e3d69;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           d="m 253.64412,351.11817 h 56"
+           style="fill:none;stroke:#4e3d69;stroke-width:2.0354;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m 251.66558,351.11817 h 58"
            id="path883-7-3" />
       </g>
     </g>
+    <path
+       id="path883-7-3-3"
+       d="m 285,547.3622 h 54"
+       style="fill:none;stroke:#2a2139;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       style="fill:none;stroke:#2a2139;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 284,492.3622 v 56"
+       id="path883-7-36" />
   </g>
 </svg>

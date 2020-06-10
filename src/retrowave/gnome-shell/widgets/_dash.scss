@@ -12,7 +12,7 @@ $dash_border_radius: $modal_radius * 1.5;
 
   .placeholder {
     // background-image: url("resource:///org/gnome/shell/theme/dash-placeholder.svg");
-    background-image:none;
+    background-image: none;
     background-size: contain;
     height: $dash_placeholder_size;
   }
@@ -33,7 +33,7 @@ $dash_border_radius: $modal_radius * 1.5;
   background-color: black;
   border-radius: $base_border_radius;
   border: 1px solid #555;
-  box-shadow:0 0 0 1px #CCC;
+  box-shadow: 0 0 0 1px #ccc;
   color: $osd_fg_color;
   padding: $base_padding $base_padding + 2px;
   text-align: center;
@@ -44,12 +44,27 @@ $dash_border_radius: $modal_radius * 1.5;
 .show-apps {
   @include overview-icon($osd_fg_color);
 
+  &,
+  &:hover,
   &:focus,
   &:checked {
     .overview-icon {
-      background-color: darken($osd_bg_color,10%);
-      color: $fg_color;
+      background-color: transparent;
+    }
+  }
+
+  .overview-icon StIcon {
+    border: 1px solid transparent;
+  }
+
+  &:hover .overview-icon StIcon {
+    @include include_asset("button", "hover", $reset: true);
+  }
+
+  &:focus,
+  &:checked {
+    .overview-icon StIcon {
+      @include include_asset("button", "active", $reset: true);
     }
   }
 }
-

@@ -23,7 +23,7 @@ $app_grid_fg_color: #fff;
 // Icon tiles in the app grid
 .app-well-app,
 %app-well-app {
-  @include overview-icon($app_grid_fg_color);
+  @include overview-icon();
 
   .overview-icon.overview-icon-with-label {
     padding: 10px 8px 5px 8px;
@@ -55,10 +55,15 @@ $app_grid_fg_color: #fff;
       font-weight: bold;
     }
 
-    & .folder-name-entry { width: 300px }
+    & .folder-name-entry {
+      width: 300px;
+    }
 
     /* FIXME: this is to keep the label in sync with the entry */
-    & .folder-name-label { padding: 5px 7px; color: $osd_fg_color; }
+    & .folder-name-label {
+      padding: 5px 7px;
+      color: $osd_fg_color;
+    }
 
     & .edit-folder-button {
       @extend %button;
@@ -68,7 +73,9 @@ $app_grid_fg_color: #fff;
       height: 36px;
       border-radius: 18px;
 
-      & > StIcon { icon-size: 16px }
+      & > StIcon {
+        icon-size: 16px;
+      }
     }
   }
 }
@@ -84,13 +91,12 @@ $app_grid_fg_color: #fff;
   spacing-columns: $base_spacing;
 }
 
-
 // Running app indicator (also shown in dash)
 .app-well-app-running-dot {
   $c: $neon_blue;
   height: 5px;
   width: 5px;
-  border-radius:5px;
+  border-radius: 5px;
   background-color: $c;
   box-shadow: _glow($c1: $c);
   margin-bottom: 1px;
@@ -100,7 +106,10 @@ $app_grid_fg_color: #fff;
 .rename-folder-popup {
   .rename-folder-popup-item {
     spacing: $base_spacing;
-    &:ltr, &:rtl { padding: 0 $base_padding * 2; }
+    &:ltr,
+    &:rtl {
+      padding: 0 $base_padding * 2;
+    }
   }
 }
 
@@ -115,12 +124,13 @@ $app_grid_fg_color: #fff;
   padding: 15px 20px;
 
   .page-indicator-icon {
-    $c: $neon_pink;
+    $c: $neon_blue;
+    $alpha: 0.6;
     width: 10px;
     height: 10px;
     border-radius: 10px; // the same as height&width
     background-color: $c;
-    box-shadow: _glow($c1: $c);
+    box-shadow: 0 0 3px 3px transparentize($c, $alpha);
   }
 }
 
@@ -132,11 +142,13 @@ $app_grid_fg_color: #fff;
 }
 
 // Label when no frequent apps
-.no-frequent-applications-label { @extend %status_text; }
+.no-frequent-applications-label {
+  @extend %status_text;
+}
 
 // shutdown and other actions in the grid
 .system-action-icon {
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
   border-radius: 99px;
   icon-size: $app_icon_size * 0.5;
@@ -145,7 +157,7 @@ $app_grid_fg_color: #fff;
 /* Frequent | All toggle */
 
 // container
-.app-view-controls { 
+.app-view-controls {
   padding-bottom: 32px;
 }
 

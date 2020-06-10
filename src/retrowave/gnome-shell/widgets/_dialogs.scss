@@ -7,7 +7,7 @@
 .modal-dialog {
   border-radius: $modal_radius;
   @extend %osd_panel;
-  padding: 5px;
+  padding: 3px; // pad till buttons are positioned properly
 
   .modal-dialog-content-box {
     margin: 32px 40px;
@@ -16,44 +16,25 @@
   }
 
   .modal-dialog-linked-button {
-    &, &:hover, &:active {
-      background-color: transparent;
-      border: none;
-    }
-
-    &, &:hover, &:focus, &:active {
-      box-shadow: none;
-    }
-
-    @include include_asset("button", "dialog-button-middle-normal", $reset: true);
-
-    &:hover, &:focus { 
-      @include include_asset("button", "dialog-button-middle-hover", $reset: true);
-    }
-
-    &:active { 
-      @include include_asset("button", "dialog-button-middle-active", $reset: true);
-    }
-    
-    &:insensitive, &:insensitive:focus {
-      color: $insensitive_fg_color;
-      @include include_asset("button", "dialog-button-middle-insensitive", $reset: true);
-    }
-
-    &:first-child, &:last-child, &:first-child:last-child {
-      border-radius: 0px;
+    &, &:first-child, &:last-child, &:first-child:last-child {
       @include include_asset("button", "dialog-button-normal", $reset: true);
 
-      &:hover, &:focus { 
+      &:hover,
+      &:focus {
         @include include_asset("button", "dialog-button-hover", $reset: true);
       }
 
-      &:active { @include include_asset("button", "dialog-button-active", $reset: true); }
-      &:insensitive, &:insensitive:focus { @include include_asset("button", "dialog-button-insensitive", $reset: true); }
-    }
-
-    &:last-child {
-      border-right-width: 0px;
+      &:active {
+        @include include_asset("button", "dialog-button-active", $reset: true);
+      }
+      &:insensitive,
+      &:insensitive:focus {
+        @include include_asset(
+          "button",
+          "dialog-button-insensitive",
+          $reset: true
+        );
+      }
     }
   }
 }
@@ -70,9 +51,15 @@
   // Shutdown Button
   .modal-dialog-linked-button:last-child {
     @include include_asset("button", "shutdown-normal", $reset: true);
-    &:focus { @include include_asset("button", "shutdown-normal", $reset: true); }
-    &:hover { @include include_asset("button", "shutdown-hover", $reset: true); }
-    &:active { @include include_asset("button", "shutdown-active", $reset: true); }
+    &:focus {
+      @include include_asset("button", "shutdown-normal", $reset: true);
+    }
+    &:hover {
+      @include include_asset("button", "shutdown-hover", $reset: true);
+    }
+    &:active {
+      @include include_asset("button", "shutdown-active", $reset: true);
+    }
   }
 }
 
@@ -90,7 +77,9 @@
       font-weight: 800;
     }
   }
-  .message-dialog-description { text-align: center; }
+  .message-dialog-description {
+    text-align: center;
+  }
 }
 
 /* Dialog List */
@@ -102,16 +91,20 @@
     font-weight: bold;
   }
 
-  .dialog-list-scrollview { max-height: 200px; }
+  .dialog-list-scrollview {
+    max-height: 200px;
+  }
   .dialog-list-box {
     spacing: 1em;
 
     .dialog-list-item {
       spacing: 1em;
 
-      .dialog-list-item-title { font-weight: bold; }
+      .dialog-list-item-title {
+        font-weight: bold;
+      }
       .dialog-list-item-description {
-        color: darken($fg_color,5%);
+        color: darken($fg_color, 5%);
         @include fontsize($base_font_size - 1);
       }
     }
@@ -124,7 +117,9 @@
     margin-top: 24px;
     margin-bottom: 14px;
   }
-  .run-dialog-entry { width: 20em; }
+  .run-dialog-entry {
+    width: 20em;
+  }
   .run-dialog-description {
     @include fontsize($base_font_size - 1);
     text-align: center;
@@ -150,8 +145,12 @@
     width: auto;
 
     // 4px (spacing) + 16px (spinner-width)
-    &:ltr { margin-left: 20px; }
-    &:rtl { margin-right: 20px; }
+    &:ltr {
+      margin-left: 20px;
+    }
+    &:rtl {
+      margin-right: 20px;
+    }
   }
 }
 
@@ -174,7 +173,6 @@
   color: $warning_color;
 }
 
-
 /* Polkit Dialog */
 
 .polkit-dialog-user-layout {
@@ -186,20 +184,29 @@
     border-radius: 99px;
     background-size: contain;
   }
-  .polkit-dialog-user-root-label { color: $warning_color; }
+  .polkit-dialog-user-root-label {
+    color: $warning_color;
+  }
 }
 
 /* Audio selection dialog */
 .audio-device-selection-dialog {
-  .modal-dialog-content-box { margin-bottom: 28px; }
-  .audio-selection-box { spacing: 20px; }
+  .modal-dialog-content-box {
+    margin-bottom: 28px;
+  }
+  .audio-selection-box {
+    spacing: 20px;
+  }
 }
 
 .audio-selection-device {
   border: 1px solid $bubble_borders_color;
   border-radius: 12px;
-  &:hover,&:focus { background-color: $hover_bg_color; }
-  &:active { 
+  &:hover,
+  &:focus {
+    background-color: $hover_bg_color;
+  }
+  &:active {
     background-color: $selected_bg_color;
     color: $selected_fg_color;
   }

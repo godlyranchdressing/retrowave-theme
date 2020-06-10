@@ -2,6 +2,25 @@
 
 // generic drawing of more complex things
 
+@mixin use_image($path, $name, $reset: false) {
+  @if ($reset) {
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  @if ($name) {
+    $name: "/" + $name;
+  }
+
+  @if ($path) {
+    $path: "/" + $path;
+  }
+
+  background-image: url("assets#{$path}#{$name}.svg");
+}
+
 @mixin include_asset($path, $name, $reset: false, $width: 1px, $slice: 6) {
   @if ($reset) {
     background-color: transparent;
@@ -22,12 +41,12 @@
   border-image: url("assets#{$path}#{$name}.svg") $slice;
 }
 
-@function _glow($c1: $neon_blue, $c2: $neon_pink, $both: false) {
+@function _glow($c1: $neon_blue, $c2: $neon_pink, $both: false, $alpha: 0.75) {
   @if ($both) {
-    @return 0 2px 3px 0 transparentize($c1, 0.75),
-      0 -2px 3px 0 transparentize($c2, 0.75);
+    @return 0 2px 3px 0 transparentize($c1, $alpha),
+      0 -2px 3px 0 transparentize($c2, $alpha);
   } @else {
-    @return 0 0 2px 3px transparentize($c1, 0.75);
+    @return 0 0 2px 3px transparentize($c1, $alpha);
   }
 }
 
@@ -151,11 +170,7 @@
   }
 }
 
-@mixin button(
-  $t,
-  $c: $bg_color,
-  $tc: $fg_color
-) {
+@mixin button($t, $c: $bg_color, $tc: $fg_color) {
   //
   // Button drawing function
   //
@@ -225,7 +240,7 @@
 }
 
 // overview icons
-@mixin overview-icon($color) {
+@mixin overview-icon($color: $osd_fg_color, $bg: $focus_color) {
   .overview-icon {
     @extend %icon_tile;
     color: $color;
@@ -234,20 +249,20 @@
   &:hover,
   &:selected {
     .overview-icon {
-      background-color: transparentize($color, 0.9);
+      background-color: transparentize($bg, 0.7);
     }
   }
 
   &:focus {
     .overview-icon {
-      background-color: transparentize($color, 0.7);
+      background-color: transparentize($bg, 0.5);
       // border-color: $focus_color;
     }
   }
 
   &:drop {
     .overview-icon {
-      background-color: transparentize($focus_color, 0.15);
+      background-color: $selected_bg_color;
     }
   }
 
