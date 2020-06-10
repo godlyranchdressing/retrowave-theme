@@ -16,16 +16,18 @@ $borders_edge: transparentize($fg_color, 0.93);
 $link_color: #f97e72;
 $link_visited_color: lighten($link_color, 10%);
 $top_hilight: $borders_edge;
-$dark_fill: mix($borders_color, $bg_color, 50%);
+// $dark_fill: mix($borders_color, $bg_color, 50%);
+$dark_fill: $base_color;
 $headerbar_color: $bg_color;
 $menu_color: mix($bg_color, $base_color, 20%);
 $popover_bg_color: $bg_color;
 $popover_hover_color: lighten($bg_color, 5%);
+$tab_active_color: #36243E;
 
 $scrollbar_bg_color: mix($base_color, $bg_color, 50%);
 $scrollbar_slider_color: mix($fg_color, $bg_color, 60%);
 $scrollbar_slider_hover_color: mix($fg_color, $bg_color, 80%);
-$scrollbar_slider_active_color: lighten($selected_bg_color, 10%);
+$scrollbar_slider_active_color: $neon_pink;
 
 $focus_color: $neon_pink;
 $warning_color: #FFEE0A;

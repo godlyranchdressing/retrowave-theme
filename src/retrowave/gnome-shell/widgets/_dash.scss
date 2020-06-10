@@ -6,16 +6,9 @@ $dash_border_radius: $modal_radius * 1.5;
 
 #dash {
   @extend %overview_panel;
+  @include include_asset("background", "no_left_border", $reset: true);
   @include fontsize($base_font_size - 2);
-  border-image: url("assets/misc/osd.svg") 4 4 4 4;
   padding: ($dash_spacing / 2) 0;
-
-  border-radius: 0 $dash_border_radius $dash_border_radius 0; 
-  border-left-width: 0;
-  &:rtl {
-    border-radius: $dash_border_radius 0 0 $dash_border_radius;
-    border-right-width: 0;
-  }
 
   .placeholder {
     // background-image: url("resource:///org/gnome/shell/theme/dash-placeholder.svg");
@@ -37,10 +30,10 @@ $dash_border_radius: $modal_radius * 1.5;
 
 // OSD Tooltip
 .dash-label {
-  background-color: transparentize($osd_bg_color,0.05);
-  border-radius: $base_border_radius + 2px;
-  border:none;
-  box-shadow:0 0 0 1px $osd_outer_borders_color;
+  background-color: black;
+  border-radius: $base_border_radius;
+  border: 1px solid #555;
+  box-shadow:0 0 0 1px #CCC;
   color: $osd_fg_color;
   padding: $base_padding $base_padding + 2px;
   text-align: center;

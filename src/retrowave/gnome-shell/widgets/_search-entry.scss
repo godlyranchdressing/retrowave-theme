@@ -12,20 +12,9 @@ $search_entry_height: 36px;
   background-color: $bg_color;
   border-color: $borders_color;
 
-  &:hover {
-    background-color: $hover_bg_color;
-    border-color: $hover_borders_color;
-    color: $hover_fg_color;
-  }
-
-  &:focus {
-    padding: $base_padding $base_padding+2; // 1px less to account for wider border
-    border-width: 2px;
-    border-style: solid;
-    border-color: $focus_color;
-    color: $fg_color;
-    box-shadow: 0 0 2px 2px transparentize($focus_color, 0.75);
-  }
+  @include include_asset("entry", "normal", $reset: true, $width: 1px, $slice: 4);
+  &:hover { @include include_asset("entry", "hover", $reset: true, $width: 1px, $slice: 4); }
+  &:focus { @include include_asset("entry", "active", $reset: true, $width: 1px, $slice: 4); }
 
   .search-entry-icon { 
     icon-size: $base_icon_size;

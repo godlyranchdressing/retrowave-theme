@@ -74,12 +74,8 @@ stage {
 
 // osd panels
 %osd_panel {
-  color: $osd_fg_color;;
-  padding: 4px;
-  border-image: url("assets/misc/osd.svg") 10 10 9 11;
-  background-color: transparent;
-  border: none;
-  border-radius: 0;
+  @include include_asset("background", "light_is_around", $reset: true);
+  color: $osd_fg_color;
 } 
 
 // Overview panels 
@@ -118,7 +114,7 @@ stage {
   &:focus { @include button(focus);}
   &:hover { @include button(hover);}
   &:insensitive { @include button(insensitive);}
-  &:active { @include button(active);}
+  &:active, &:checked { @include button(active);}
 }
 
 // buttons in dialogs

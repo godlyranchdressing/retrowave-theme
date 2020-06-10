@@ -30,6 +30,7 @@ $window_close_button_padding: 3px;
   // the exact shape when the window is scaled. So apply a shadow
   // to fix that case
   box-shadow: 0 0 0 1px transparentize($borders_color, 0.8);
+  @include include_asset("neon", "aura_transparent", $reset: true, $width: 3px, $slice: 4);
 }
 
 // Window titles

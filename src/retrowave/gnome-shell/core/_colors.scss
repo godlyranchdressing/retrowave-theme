@@ -15,8 +15,10 @@ $borders_edge: transparentize($fg_color, 0.93);
 $link_color: #f97e72;
 $link_visited_color: lighten($link_color, 10%);
 $top_hilight: $borders_edge;
+$popover_active_color: #36243E;
 
-$dark_fill: mix($borders_color, $bg_color, 50%);
+// $dark_fill: mix($borders_color, $bg_color, 50%);
+$dark_fill: $base_color;
 $focus_color: $neon_pink;
 $warning_color: #FFEE0A;
 $error_color: #FF382D;

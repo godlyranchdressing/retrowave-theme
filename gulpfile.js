@@ -52,7 +52,7 @@ gulp.task("zip", () => {
 gulp.task("dev-gtk3", () => {
   return gulp.watch(src + "/**/**/*.scss", done => {
     gulp.series(["styles"])(done);
-    run('awf-gtk3');
+    run('gtk3-widget-factory');
   });
 });
 

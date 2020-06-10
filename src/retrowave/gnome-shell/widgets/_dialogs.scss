@@ -7,6 +7,7 @@
 .modal-dialog {
   border-radius: $modal_radius;
   @extend %osd_panel;
+  padding: 5px;
 
   .modal-dialog-content-box {
     margin: 32px 40px;
@@ -24,35 +25,35 @@
       box-shadow: none;
     }
 
-    border-image: url('assets/buttons/modal-dialog-button-middle.svg') 4;
+    @include include_asset("button", "dialog-button-middle-normal", $reset: true);
 
-    &:hover, &:focus { border-image: url('assets/buttons/modal-dialog-button-middle-hover.svg') 4; }
-    &:active { border-image: url('assets/buttons/modal-dialog-button-middle-active.svg') 4; }
+    &:hover, &:focus { 
+      @include include_asset("button", "dialog-button-middle-hover", $reset: true);
+    }
+
+    &:active { 
+      @include include_asset("button", "dialog-button-middle-active", $reset: true);
+    }
     
     &:insensitive, &:insensitive:focus {
       color: $insensitive_fg_color;
-      border-image: url('assets/buttons/modal-dialog-button-middle-insensitive.svg') 4;
+      @include include_asset("button", "dialog-button-middle-insensitive", $reset: true);
     }
 
-    &:first-child, &:last-child {
+    &:first-child, &:last-child, &:first-child:last-child {
       border-radius: 0px;
-      border-image: url('assets/buttons/modal-dialog-button.svg') 4;
-      &:hover, &:focus { border-image: url('assets/buttons/modal-dialog-button-hover.svg') 4; }
-      &:active { border-image: url('assets/buttons/modal-dialog-button-active.svg') 4; }
-      &:insensitive, &:insensitive:focus { border-image: url('assets/buttons/modal-dialog-button-insensitive.svg') 4; }
+      @include include_asset("button", "dialog-button-normal", $reset: true);
+
+      &:hover, &:focus { 
+        @include include_asset("button", "dialog-button-hover", $reset: true);
+      }
+
+      &:active { @include include_asset("button", "dialog-button-active", $reset: true); }
+      &:insensitive, &:insensitive:focus { @include include_asset("button", "dialog-button-insensitive", $reset: true); }
     }
 
     &:last-child {
       border-right-width: 0px;
-    }
-
-    &:first-child:last-child {
-      border-right-width: 0px;
-      border-radius: 0px 0px 2px 2px;
-      border-image: url('assets/buttons/modal-dialog-button.svg') 4;
-      &:hover, &:focus { border-image: url('assets/buttons/modal-dialog-button-hover.svg') 4; }
-      &:active { border-image: url('assets/buttons/modal-dialog-button-active.svg') 4; }
-      &:insensitive, &:insensitive:focus { border-image: url('assets/buttons/modal-dialog-button-insensitive.svg') 4; }
     }
   }
 }
@@ -68,10 +69,10 @@
 
   // Shutdown Button
   .modal-dialog-linked-button:last-child {
-    border-image: url('assets/buttons/shutdown-button-border.svg') 4;
-    &:focus { border-image: url('assets/buttons/shutdown-button-border.svg') 4; }
-    &:hover { border-image: url('assets/buttons/shutdown-button-border-hover.svg') 4; }
-    &:active { border-image: url('assets/buttons/shutdown-button-border-active.svg') 4; }
+    @include include_asset("button", "shutdown-normal", $reset: true);
+    &:focus { @include include_asset("button", "shutdown-normal", $reset: true); }
+    &:hover { @include include_asset("button", "shutdown-hover", $reset: true); }
+    &:active { @include include_asset("button", "shutdown-active", $reset: true); }
   }
 }
 

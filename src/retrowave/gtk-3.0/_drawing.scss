@@ -2,25 +2,28 @@
 
 // generic drawing of more complex things
 
-@function _glow($c1: $neon_blue, $c2: $neon_pink, $both: false) {
+@function _glow(
+  $c1: $neon_blue,
+  $c2: $neon_pink,
+  $both: false,
+  $alpha: 0.75,
+  $blur: 3px
+) {
   @if ($both) {
-    @return 0 2px 3px 0 transparentize($c1, 0.75),
-      0 -2px 3px 0 transparentize($c2, 0.75);
+    @return 0 2px $blur 0 transparentize($c1, $alpha),
+      0 -2px $blur 0 transparentize($c2, $alpha);
   } @else {
-    @return 0 0 2px 1px transparentize($c1, 0.75);
+    @return 0 0 2px ($blur - 2px) transparentize($c1, $alpha);
   }
 }
 
 @mixin highlight_color($c1: $neon_pink, $c2: $neon_blue, $d: "to right") {
   background-image: linear-gradient(#{$d}, $c1, $c2);
-}
 
-@function _widget_edge($c: $borders_edge) {
-  // outer highlight "used" on most widgets
-  @if $c == none {
-    @return none;
-  } @else {
-    @return 0 1px $c;
+  &:backdrop {
+    $c1: desaturate($c1, 90%);
+    $c2: desaturate($c2, 90%);
+    background-image: linear-gradient(#{$d}, $c1, $c2);
   }
 }
 
@@ -41,11 +44,7 @@
 
 // entries
 @function entry_focus_border($fc: $focus_color) {
-    @return $fc;
-}
-
-@function entry_focus_shadow($fc: $focus_color) {
-  @return inset 0 0 0 1px $fc;
+  @return $fc;
 }
 
 @mixin entry($t, $fc: $focus_color, $edge: none) {
@@ -230,18 +229,14 @@
     $_hilight_color: _button_hilight_color($c);
     $_retro_highlight: inset 0 2px _button_hilight_color($c),
       inset -2px 0 _button_hilight_color($c),
-      inset 0 -1px _button_lowlight_color($c),
-      inset 1px 0 _button_lowlight_color($c);
+      inset 0 -1px if($c==$bg_color, _button_lowlight_color($c), darken($c, 25%)),
+      inset 1px 0 if($c==$bg_color, _button_lowlight_color($c), darken($c, 25%));
     //
     color: $tc;
     outline-color: transparentize($tc, 0.7);
     background-color: lighten($c, 5%);
     border-color: $borders_color;
-    border-bottom-color: if(
-      $c != $c,
-      _border_color($c, true),
-      _border_color($c)
-    );
+    border-bottom-color: if($c != $bg_color, darken($c, 50%), _border_color($c));
     @include _button_text_shadow($tc, $c);
     @include _shadows($_retro_highlight);
   }
@@ -267,7 +262,7 @@
     color: $tc;
     outline-color: transparentize($tc, 0.7);
     border-color: if($c != $c, _border_color($c, true), $alt_borders_color);
-    background-color: darken($c, 4%);
+    background-color: lighten($c, 4%);
     @include _shadows(inset 0 1px $_hilight_color, $_button_shadow);
   } @else if $t==active {
     //
@@ -454,16 +449,7 @@
   }
 
   $_small_gradient_color: $c;
-  $_big_gradient_color: transparentize($c, 0.93);
-
-  @if $c==$fg_color {
-    $_small_gradient_color: darken($borders_color, 10%);
-    $_big_gradient_color: transparentize($fg_color, 0.93);
-
-    @if $t==backdrop {
-      $_small_gradient_color: $backdrop_borders_color;
-    }
-  }
+  $_big_gradient_color: transparentize($neon_pink, 0.9);
 
   $_small_gradient: radial-gradient(
     farthest-side at $p,

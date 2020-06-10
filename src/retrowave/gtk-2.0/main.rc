@@ -67,14 +67,14 @@ style "default" {
   GtkScale::slider_width        = 26
   GtkScale::trough-side-details = 1
 
-  GtkProgressBar::min-horizontal-bar-height = 6
-  GtkProgressBar::min-vertical-bar-width    = 6
+  GtkProgressBar::min-horizontal-bar-height = 10
+  GtkProgressBar::min-vertical-bar-width    = 10
   # Making this bigger than the min[height,width]-2*[y,x]spacing makes the
   # whole progressbar thicker, so by setting it to the exact above value
   # we get the maximum spacing between the text and the edges without
   # doing so.
-  GtkProgressBar::xspacing = 4
-  GtkProgressBar::yspacing = 4
+  GtkProgressBar::xspacing = 6
+  GtkProgressBar::yspacing = 6
 
   GtkStatusbar::shadow_type    = GTK_SHADOW_NONE
   GtkSpinButton::shadow_type   = GTK_SHADOW_NONE
@@ -102,7 +102,7 @@ style "default" {
 
   GtkExpander::expander-size = 16
 
-  GtkNotebook::tab-overlap = 4
+  GtkNotebook::tab-overlap = 0
 
   ##########
   # Colors #
@@ -779,15 +779,15 @@ style "default" {
     image {
       function = EXTENSION
       state    = NORMAL
-      file     = "assets/tab-left-active.png"
-      border   = {3, 0, 3, 3}
+      file     = "assets/tab-right-active.png"
+      border   = {0, 3, 3, 3}
       stretch  = TRUE
       gap_side = RIGHT
     }
 
     image {
       function = EXTENSION
-      file     = "assets/tab-left.png"
+      file     = "assets/tab.png"
       border   = {3, 0, 3, 3}
       stretch  = TRUE
       gap_side = RIGHT
@@ -798,15 +798,15 @@ style "default" {
     image {
       function = EXTENSION
       state    = NORMAL
-      file     = "assets/tab-right-active.png"
-      border   = {0, 3, 3, 3}
+      file     = "assets/tab-left-active.png"
+      border   = {3, 0, 3, 3}
       stretch  = TRUE
       gap_side = LEFT
     }
 
     image {
       function = EXTENSION
-      file     = "assets/tab-right.png"
+      file     = "assets/tab.png"
       border   = {0, 3, 3, 3}
       stretch  = TRUE
       gap_side = LEFT
@@ -818,15 +818,15 @@ style "default" {
       function = EXTENSION
       state    = NORMAL
       file     = "assets/tab-up-active.png"
-      border   = {3, 3, 3, 0}
+      border   = {0, 3, 3, 3}
       stretch  = TRUE
       gap_side = BOTTOM
     }
 
     image {
       function = EXTENSION
-      file     = "assets/tab-up.png"
-      border   = {3, 3, 3, 0}
+      file     = "assets/tab.png"
+      border   = {3, 3, 3, 3}
       stretch  = TRUE
       gap_side = BOTTOM
     }
@@ -837,14 +837,14 @@ style "default" {
       function = EXTENSION
       state    = NORMAL
       file     = "assets/tab-down-active.png"
-      border   = {3, 3, 0, 3}
+      border   = {0, 3, 3, 3}
       stretch  = TRUE
       gap_side = TOP
     }
 
     image {
       function = EXTENSION
-      file     = "assets/tab-down.png"
+      file     = "assets/tab.png"
       border   = {3, 3, 0, 3}
       stretch  = TRUE
       gap_side = TOP
@@ -1057,7 +1057,7 @@ style "default" {
       function    = BOX
       detail      = "trough-upper"
       file        = "assets/scale-horz-trough.png"
-      border      = {10, 10, 0, 0}
+      border      = {8, 8, 8, 8}
       stretch     = TRUE
       orientation = HORIZONTAL
     }
@@ -1066,7 +1066,7 @@ style "default" {
       function    = BOX
       detail      = "trough-lower"
       file        = "assets/scale-horz-trough-active.png"
-      border      = {10, 10, 0, 0}
+      border      = {8, 8, 8, 8}
       stretch     = TRUE
       orientation = HORIZONTAL
     }
@@ -1075,7 +1075,7 @@ style "default" {
       function    = BOX
       detail      = "trough-upper"
       file        = "assets/scale-vert-trough.png"
-      border      = {0, 0, 10, 10}
+      border      = {8, 8, 8, 8}
       stretch     = TRUE
       orientation = VERTICAL
     }
@@ -1084,7 +1084,7 @@ style "default" {
       function    = BOX
       detail      = "trough-lower"
       file        = "assets/scale-vert-trough-active.png"
-      border      = {0, 0, 10, 10}
+      border      = {8, 8, 8, 8}
       stretch     = TRUE
       orientation = VERTICAL
     }
@@ -1452,7 +1452,7 @@ style "default" {
       detail      = "bar"
       file        = "assets/progressbar-horz.png"
       stretch     = TRUE
-      border      = {2, 2, 1, 1}
+      border      = {2, 2, 2, 2}
       orientation = HORIZONTAL
     }
 
@@ -1461,7 +1461,7 @@ style "default" {
       detail      = "bar"
       file        = "assets/progressbar-vert.png"
       stretch     = TRUE
-      border      = {1, 1, 2, 2}
+      border      = {2, 2, 2, 2}
       orientation = VERTICAL
     }
 
@@ -1550,7 +1550,7 @@ style "menu_item" {
       function        = CHECK
       state           = NORMAL
       shadow          = OUT
-      overlay_file    = "assets/menu-checkbox.png"
+      overlay_file    = "assets/checkbox.png"
       overlay_stretch = FALSE
     }
 
@@ -1558,7 +1558,7 @@ style "menu_item" {
       function        = CHECK
       state           = PRELIGHT
       shadow          = OUT
-      overlay_file    = "assets/menu-checkbox-hover.png"
+      overlay_file    = "assets/checkbox-hover.png"
       overlay_stretch = FALSE
     }
 
@@ -1566,7 +1566,7 @@ style "menu_item" {
       function        = CHECK
       state           = ACTIVE
       shadow          = OUT
-      overlay_file    = "assets/menu-checkbox.png"
+      overlay_file    = "assets/checkbox.png"
       overlay_stretch = FALSE
     }
 
@@ -1574,7 +1574,7 @@ style "menu_item" {
       function        = CHECK
       state           = INSENSITIVE
       shadow          = OUT
-      overlay_file    = "assets/menu-checkbox-insensitive.png"
+      overlay_file    = "assets/checkbox-insensitive.png"
       overlay_stretch = FALSE
     }
 
@@ -1582,7 +1582,7 @@ style "menu_item" {
       function        = CHECK
       state           = NORMAL
       shadow          = IN
-      overlay_file    = "assets/menu-checkbox-checked.png"
+      overlay_file    = "assets/checkbox-checked.png"
       overlay_stretch = FALSE
     }
 
@@ -1590,7 +1590,7 @@ style "menu_item" {
       function        = CHECK
       state           = PRELIGHT
       shadow          = IN
-      overlay_file    = "assets/menu-checkbox-checked.png"
+      overlay_file    = "assets/checkbox-checked.png"
       overlay_stretch = FALSE
     }
 
@@ -1598,7 +1598,7 @@ style "menu_item" {
       function        = CHECK
       state           = ACTIVE
       shadow          = IN
-      overlay_file    = "assets/menu-checkbox-checked.png"
+      overlay_file    = "assets/checkbox-checked.png"
       overlay_stretch = FALSE
     }
 
@@ -1606,7 +1606,7 @@ style "menu_item" {
       function        = CHECK
       state           = INSENSITIVE
       shadow          = IN
-      overlay_file    = "assets/menu-checkbox-checked-insensitive.png"
+      overlay_file    = "assets/checkbox-checked-insensitive.png"
       overlay_stretch = FALSE
     }
 
@@ -1614,7 +1614,7 @@ style "menu_item" {
       function        = CHECK
       state           = NORMAL
       shadow          = ETCHED_IN
-      overlay_file    = "assets/menu-checkbox-mixed.png"
+      overlay_file    = "assets/checkbox-mixed.png"
       overlay_stretch = FALSE
     }
 
@@ -1622,7 +1622,7 @@ style "menu_item" {
       function        = CHECK
       state           = PRELIGHT
       shadow          = ETCHED_IN
-      overlay_file    = "assets/menu-checkbox-mixed-hover.png"
+      overlay_file    = "assets/checkbox-mixed-hover.png"
       overlay_stretch = FALSE
     }
 
@@ -1630,7 +1630,7 @@ style "menu_item" {
       function        = CHECK
       state           = ACTIVE
       shadow          = ETCHED_IN
-      overlay_file    = "assets/menu-checkbox-mixed.png"
+      overlay_file    = "assets/checkbox-mixed.png"
       overlay_stretch = FALSE
     }
 
@@ -1638,7 +1638,7 @@ style "menu_item" {
       function        = CHECK
       state           = INSENSITIVE
       shadow          = ETCHED_IN
-      overlay_file    = "assets/menu-checkbox-mixed-insensitive.png"
+      overlay_file    = "assets/checkbox-mixed-insensitive.png"
       overlay_stretch = FALSE
     }
 
@@ -1650,7 +1650,7 @@ style "menu_item" {
       function        = OPTION
       state           = NORMAL
       shadow          = OUT
-      overlay_file    = "assets/menu-radio.png"
+      overlay_file    = "assets/radio.png"
       overlay_stretch = FALSE
     }
 
@@ -1658,7 +1658,7 @@ style "menu_item" {
       function        = OPTION
       state           = PRELIGHT
       shadow          = OUT
-      overlay_file    = "assets/menu-radio-hover.png"
+      overlay_file    = "assets/radio-hover.png"
       overlay_stretch = FALSE
     }
 
@@ -1666,7 +1666,7 @@ style "menu_item" {
       function        = OPTION
       state           = ACTIVE
       shadow          = OUT
-      overlay_file    = "assets/menu-radio.png"
+      overlay_file    = "assets/radio.png"
       overlay_stretch = FALSE
     }
 
@@ -1674,7 +1674,7 @@ style "menu_item" {
       function        = OPTION
       state           = INSENSITIVE
       shadow          = OUT
-      overlay_file    = "assets/menu-radio-insensitive.png"
+      overlay_file    = "assets/radio-insensitive.png"
       overlay_stretch = FALSE
     }
 
@@ -1682,7 +1682,7 @@ style "menu_item" {
       function        = OPTION
       state           = NORMAL
       shadow          = IN
-      overlay_file    = "assets/menu-radio-checked.png"
+      overlay_file    = "assets/radio-checked.png"
       overlay_stretch = FALSE
     }
 
@@ -1690,7 +1690,7 @@ style "menu_item" {
       function        = OPTION
       state           = PRELIGHT
       shadow          = IN
-      overlay_file    = "assets/menu-radio-checked-hover.png"
+      overlay_file    = "assets/radio-checked-hover.png"
       overlay_stretch = FALSE
     }
 
@@ -1698,7 +1698,7 @@ style "menu_item" {
       function        = OPTION
       state           = ACTIVE
       shadow          = IN
-      overlay_file    = "assets/menu-radio-checked.png"
+      overlay_file    = "assets/radio-checked.png"
       overlay_stretch = FALSE
     }
 
@@ -1706,7 +1706,7 @@ style "menu_item" {
       function        = OPTION
       state           = INSENSITIVE
       shadow          = IN
-      overlay_file    = "assets/menu-radio-checked-insensitive.png"
+      overlay_file    = "assets/radio-checked-insensitive.png"
       overlay_stretch = FALSE
     }
 
@@ -1714,7 +1714,7 @@ style "menu_item" {
       function        = OPTION
       state           = NORMAL
       shadow          = ETCHED_IN
-      overlay_file    = "assets/menu-radio-mixed.png"
+      overlay_file    = "assets/radio-mixed.png"
       overlay_stretch = FALSE
     }
 
@@ -1722,7 +1722,7 @@ style "menu_item" {
       function        = OPTION
       state           = PRELIGHT
       shadow          = ETCHED_IN
-      overlay_file    = "assets/menu-radio-mixed.png"
+      overlay_file    = "assets/radio-mixed.png"
       overlay_stretch = FALSE
     }
 
@@ -1730,7 +1730,7 @@ style "menu_item" {
       function        = OPTION
       state           = ACTIVE
       shadow          = ETCHED_IN
-      overlay_file    = "assets/menu-radio-mixed.png"
+      overlay_file    = "assets/radio-mixed.png"
       overlay_stretch = FALSE
     }
 
@@ -1738,7 +1738,7 @@ style "menu_item" {
       function        = OPTION
       state           = INSENSITIVE
       shadow          = ETCHED_IN
-      overlay_file    = "assets/menu-radio-mixed-insensitive.png"
+      overlay_file    = "assets/radio-mixed-insensitive.png"
       overlay_stretch = FALSE
     }
 
@@ -2206,7 +2206,7 @@ style "scale_horz" {
       function    = BOX
       detail      = "trough-upper"
       file        = "assets/scale-horz-trough.png"
-      border      = {10, 10, 0, 0}
+      border      = {8, 8, 8, 8}
       stretch     = TRUE
     }
 
@@ -2214,7 +2214,7 @@ style "scale_horz" {
       function    = BOX
       detail      = "trough-lower"
       file        = "assets/scale-horz-trough-active.png"
-      border      = {10, 10, 0, 0}
+      border      = {8, 8, 8, 8}
       stretch     = TRUE
     }
 
@@ -2223,14 +2223,13 @@ style "scale_horz" {
 }
 
 style "scale_vert" {
-
   engine "pixmap" {
 
     image {
       function    = BOX
       detail      = "trough-upper"
       file        = "assets/scale-vert-trough.png"
-      border      = {0, 0, 10, 10}
+      border      = {8, 8, 8, 8}
       stretch     = TRUE
     }
 
@@ -2238,7 +2237,7 @@ style "scale_vert" {
       function    = BOX
       detail      = "trough-lower"
       file        = "assets/scale-vert-trough-active.png"
-      border      = {0, 0, 10, 10}
+      border      = {8, 8, 8, 8}
       stretch     = TRUE
     }
 
@@ -2259,7 +2258,7 @@ style "progressbar" {
       function    = BOX
       detail      = "trough"
       file        = "assets/progressbar-horz-trough.png"
-      border      = {3, 3, 2, 2}
+      border      = {2, 2, 2, 2}
       stretch     = TRUE
       orientation = HORIZONTAL
     }
@@ -2268,7 +2267,7 @@ style "progressbar" {
       function    = BOX
       detail      = "trough"
       file        = "assets/progressbar-vert-trough.png"
-      border      = {2, 2, 3, 3}
+      border      = {2, 2, 2, 2}
       stretch     = TRUE
       orientation = VERTICAL
     }

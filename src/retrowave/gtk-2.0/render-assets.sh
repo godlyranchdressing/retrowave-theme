@@ -4,9 +4,9 @@ INKSCAPE="/usr/bin/inkscape"
 ZOPFLIPNG="/usr/bin/zopflipng"
 SRC_PATH="./src/retrowave/gtk-2.0"
 
-SRC_FILE=$(readlink -f $SRC_PATH"/assets.svg")
-ASSETS_DIR=$(readlink -f $SRC_PATH"/assets")
-INDEX=$(readlink -f $SRC_PATH"/assets.txt")
+SRC_FILE="assets.svg"
+ASSETS_DIR="assets"
+INDEX="assets.txt"
 
 for i in `cat $INDEX`
 do 
