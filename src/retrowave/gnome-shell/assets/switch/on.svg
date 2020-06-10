@@ -7,128 +7,128 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docname="switch-on.svg"
-   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   version="1.1"
-   id="svg7539"
+   width="48.030354"
    height="24.030354"
-   width="48.030354">
+   id="svg7539"
+   version="1.1"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="on.svg">
   <defs
      id="defs7541">
     <linearGradient
        id="linearGradient4695-1-4-3-5-0-6">
       <stop
-         offset="0"
+         id="stop4697-9-9-7-0-1-5"
          style="stop-color:#000000;stop-opacity:1;"
-         id="stop4697-9-9-7-0-1-5" />
+         offset="0" />
       <stop
-         offset="1"
+         id="stop4699-5-8-9-0-4-0"
          style="stop-color:#000000;stop-opacity:0"
-         id="stop4699-5-8-9-0-4-0" />
+         offset="1" />
     </linearGradient>
     <linearGradient
        id="linearGradient3768-6">
       <stop
-         id="stop3770-0"
+         style="stop-color:#0f0f0f;stop-opacity:1;"
          offset="0"
-         style="stop-color:#0f0f0f;stop-opacity:1;" />
+         id="stop3770-0" />
       <stop
-         style="stop-color:#171717;stop-opacity:1;"
+         id="stop3778-6"
          offset="0.078125"
-         id="stop3778-6" />
-      <stop
-         id="stop3774-2"
-         offset="0.97355771"
          style="stop-color:#171717;stop-opacity:1;" />
       <stop
-         id="stop3776-2"
+         style="stop-color:#171717;stop-opacity:1;"
+         offset="0.97355771"
+         id="stop3774-2" />
+      <stop
+         style="stop-color:#1b1b1b;stop-opacity:1;"
          offset="1"
-         style="stop-color:#1b1b1b;stop-opacity:1;" />
+         id="stop3776-2" />
     </linearGradient>
     <linearGradient
        id="linearGradient3969-0-4">
       <stop
-         id="stop3971-2-6"
+         style="stop-color:#353537;stop-opacity:1;"
          offset="0"
-         style="stop-color:#353537;stop-opacity:1;" />
+         id="stop3971-2-6" />
       <stop
-         id="stop3973-0-1"
+         style="stop-color:#4d4f52;stop-opacity:1;"
          offset="1"
-         style="stop-color:#4d4f52;stop-opacity:1;" />
+         id="stop3973-0-1" />
     </linearGradient>
     <linearGradient
        id="linearGradient3938">
       <stop
-         style="stop-color:#ffffff;stop-opacity:0;"
+         id="stop3940"
          offset="0"
-         id="stop3940" />
+         style="stop-color:#ffffff;stop-opacity:0;" />
       <stop
-         style="stop-color:#ffffff;stop-opacity:0.54901963;"
+         id="stop3942"
          offset="1"
-         id="stop3942" />
+         style="stop-color:#ffffff;stop-opacity:0.54901963;" />
     </linearGradient>
     <linearGradient
        id="linearGradient6523">
       <stop
-         style="stop-color:#1a1a1a;stop-opacity:1;"
+         id="stop6525"
          offset="0"
-         id="stop6525" />
+         style="stop-color:#1a1a1a;stop-opacity:1;" />
       <stop
-         style="stop-color:#1a1a1a;stop-opacity:0;"
+         id="stop6527"
          offset="1"
-         id="stop6527" />
+         style="stop-color:#1a1a1a;stop-opacity:0;" />
     </linearGradient>
     <linearGradient
        id="linearGradient3938-6">
       <stop
-         style="stop-color:#bebebe;stop-opacity:1;"
+         id="stop3940-3"
          offset="0"
-         id="stop3940-3" />
+         style="stop-color:#bebebe;stop-opacity:1;" />
       <stop
-         style="stop-color:#ffffff;stop-opacity:1;"
+         id="stop3942-7"
          offset="1"
-         id="stop3942-7" />
+         style="stop-color:#ffffff;stop-opacity:1;" />
     </linearGradient>
   </defs>
   <sodipodi:namedview
-     inkscape:document-rotation="0"
-     inkscape:bbox-nodes="true"
-     inkscape:snap-bbox-edge-midpoints="true"
-     inkscape:bbox-paths="true"
-     inkscape:guide-bbox="true"
-     showguides="true"
-     inkscape:snap-bbox="true"
-     inkscape:window-maximized="1"
-     inkscape:window-y="0"
-     inkscape:window-x="1920"
-     inkscape:window-height="1044"
-     inkscape:window-width="1920"
-     fit-margin-bottom="0"
-     fit-margin-right="0"
-     fit-margin-left="0"
-     fit-margin-top="0"
-     inkscape:document-units="px"
-     inkscape:grid-bbox="true"
-     showgrid="true"
-     inkscape:current-layer="layer1"
-     inkscape:cy="19.945111"
-     inkscape:cx="32.189867"
-     inkscape:zoom="11.666667"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0.0"
-     borderopacity="1.0"
+     id="base"
+     pagecolor="#2a2139"
      bordercolor="#666666"
-     pagecolor="#ffffff"
-     id="base">
+     borderopacity="1.0"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="8.5274435"
+     inkscape:cx="20.563429"
+     inkscape:cy="22.112961"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:grid-bbox="true"
+     inkscape:document-units="px"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1920"
+     inkscape:window-height="1053"
+     inkscape:window-x="-2"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:snap-bbox="true"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:bbox-paths="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:bbox-nodes="true"
+     inkscape:document-rotation="0">
     <inkscape:grid
-       originy="10.402808"
-       originx="-16.985012"
-       snapvisiblegridlinesonly="true"
-       enabled="true"
-       visible="true"
-       empspacing="5"
+       type="xygrid"
        id="grid3019"
-       type="xygrid" />
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true"
+       originx="-16.985012"
+       originy="10.402808" />
   </sodipodi:namedview>
   <metadata
      id="metadata7544">
@@ -138,39 +138,39 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
-     transform="translate(-132.98502,103.40281)"
-     inkscape:groupmode="layer"
+     id="layer1"
      inkscape:label="Layer 1"
-     id="layer1">
+     inkscape:groupmode="layer"
+     transform="translate(-132.98502,103.40281)">
     <rect
-       y="-103.38763"
-       x="133.00018"
-       height="24"
-       width="48"
+       style="fill:#03edf9;fill-opacity:1;stroke-width:3.49148"
        id="rect1907"
-       style="fill:#03edf9;fill-opacity:1;stroke-width:3.49148" />
+       width="48"
+       height="24"
+       x="133.00018"
+       y="-103.38763" />
     <rect
-       y="-102.90281"
-       x="133.48502"
-       height="23.030354"
-       width="47.030354"
+       style="fill:none;fill-opacity:1;stroke:#02adb6;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect1909"
-       style="fill:none;fill-opacity:1;stroke:#02adb6;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       width="47.030354"
+       height="23.030354"
+       x="133.48502"
+       y="-102.90281" />
     <rect
-       y="-102.91528"
-       x="157.47253"
-       height="23.055285"
-       width="23.05529"
+       style="fill:#2a2139;fill-opacity:1;stroke:#000000;stroke-width:0.94471;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect1911"
-       style="fill:#2a2139;fill-opacity:1;stroke:#000000;stroke-width:0.94471;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       width="23.05529"
+       height="23.055285"
+       x="157.47253"
+       y="-102.91528" />
     <path
-       id="path1913"
+       style="fill:none;stroke:#5c487d;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 158,-101.89981 h 22"
-       style="fill:none;stroke:#5c487d;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       id="path1913" />
   </g>
 </svg>

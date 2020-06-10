@@ -33,25 +33,37 @@ $base_spacing: 6px;
 // border radii
 $base_border_radius: 0px;
 
-$modal_radius:$base_border_radius * 2;
+$modal_radius: $base_border_radius * 2;
 
 // non-standard colors
-$bubble_borders_color: lighten($borders_color, if($variant=='light', 0%, 5%));
+$bubble_borders_color: lighten($borders_color, if($variant== "light", 0%, 5%));
 // $bubble_borders_color: if($variant == 'light', rgba(255,255,255,0.1), rgba(0,0,0,0.3));
 
 // hover
-$hover_bg_color: if($variant=='light', darken($bg_color, 3%), lighten($bg_color, 5%));
-$hover_fg_color: if($variant=='light', darken($fg_color, 5%), lighten($fg_color, 5%));
-$hover_borders_color: lighten($borders_color,if($variant=='light', 5%, 3%));
+$hover_bg_color: if(
+  $variant== "light",
+  darken($bg_color, 3%),
+  lighten($bg_color, 5%)
+);
+$hover_fg_color: if(
+  $variant== "light",
+  darken($fg_color, 5%),
+  lighten($fg_color, 5%)
+);
+$hover_borders_color: lighten($borders_color, if($variant== "light", 5%, 3%));
 
 // active
-$active_bg_color: if($variant == 'light', darken($bg_color, 7%), darken($bg_color, 9%));
-$active_fg_color: darken($fg_color,if($variant=='light', 5%, 3%));
-$active_borders_color: darken($borders_color,if($variant=='light', 5%, 3%));
+$active_bg_color: if(
+  $variant == "light",
+  darken($bg_color, 7%),
+  darken($bg_color, 9%)
+);
+$active_fg_color: darken($fg_color, if($variant== "light", 5%, 3%));
+$active_borders_color: darken($borders_color, if($variant== "light", 5%, 3%));
 
 // fonts
 $base_font_size: 11;
-$text_shadow_color: rgba(0,0,0,0.2);
+$text_shadow_color: rgba(0, 0, 0, 0.2);
 
 // icons
 $base_icon_size: 1.09em;
@@ -76,9 +88,9 @@ stage {
 %osd_panel {
   @include include_asset("background", "light_is_around", $reset: true);
   color: $osd_fg_color;
-} 
+}
 
-// Overview panels 
+// Overview panels
 // for the dash and workspace switcher
 %overview_panel {
   color: $osd_fg_color;
@@ -99,7 +111,7 @@ stage {
 %bubble_panel {
   color: $fg_color;
   background-color: $bg_color;
-  border: 1px solid if($variant=='light', rgba(0,0,0, 0.6), $borders_color);
+  border: 1px solid if($variant== "light", rgba(0, 0, 0, 0.6), $borders_color);
 }
 
 // button styling
@@ -111,41 +123,50 @@ stage {
   padding: $base_padding * 0.5 $base_padding * 4;
 
   @include button(normal);
-  &:focus { @include button(focus);}
-  &:hover { @include button(hover);}
-  &:insensitive { @include button(insensitive);}
-  &:active, &:checked { @include button(active);}
+  &:focus {
+    @include button(focus);
+  }
+  &:hover {
+    @include button(hover);
+  }
+  &:insensitive {
+    @include button(insensitive);
+  }
+  &:active,
+  &:checked {
+    @include button(active);
+  }
 }
 
 // buttons in dialogs
 %bubble_button {
-  @include button(normal, $shadow: none);
+  @include button(normal);
   padding: $base_padding * 2;
   border-style: solid;
   border-width: 1px;
   border-left-width: 0;
   border-bottom-width: 0;
 
-  &:insensitive { @include button(insensitive, $shadow: none); }
-  &:hover { @include button(hover, $shadow: none); }
-  &:focus { @include button(focus, $shadow: none); }
-  &:active { @include button(active, $shadow: none); }
+  &:insensitive {
+    @include button(insensitive);
+  }
+  &:hover {
+    @include button(hover);
+  }
+  &:focus {
+    @include button(focus);
+  }
+  &:active {
+    @include button(active);
+  }
 
   // radius is 2 pixel less to fit in bubble
-  &:first-child {
-    border-radius: 0 0 0 $modal_radius - 2px;
-  }
-
-  &:last-child {
-    border-right-width: 0;
-    border-radius: 0 0 $modal_radius - 2px 0;
-  }
-  
+  &:first-child,
+  &:last-child,
   &:first-child:last-child {
-    border-radius: 0 0 $modal_radius - 2px $modal_radius - 2px;
+    border-radius: 0;
   }
 }
-
 
 // notification styling
 @mixin notification_bubble($flat: false) {

@@ -154,9 +154,7 @@
 @mixin button(
   $t,
   $c: $bg_color,
-  $tc: $fg_color,
-  $edge: $borders_edge,
-  $shadow: $shadow_color
+  $tc: $fg_color
 ) {
   //
   // Button drawing function
@@ -164,10 +162,6 @@
   // $t:    button type,
   // $c:    base button color for colored* types
   // $tc:   optional text color for colored* types
-  // $edge: set to none to not draw the bottom edge or specify a color to not
-  //        use the default one
-  // $shadow: set to none to not draw the drop shadow or specify a color to not
-  //          use the default one
   //
   // possible $t values:
   // normal, hover, active, insensitive, insensitive-active,
@@ -176,13 +170,6 @@
   //
 
   $hilight_color: draw_button_hilight_color($c);
-  $button_edge: if($edge == none, none, draw_widget_edge($edge));
-  $blank_edge: if(
-    $edge == none,
-    none,
-    draw_widget_edge(transparentize($edge, 1))
-  );
-  $button_shadow: if($shadow == none, none, 0 1px 1px 0 $shadow);
 
   // normal button
   @if $t==normal {
@@ -221,6 +208,7 @@
     color: $insensitive_fg_color;
     border-color: $insensitive_borders_color;
     background-color: $insensitive_bg_color;
+    border-image: none;
     box-shadow: none;
     text-shadow: none;
     icon-shadow: none;
@@ -231,7 +219,6 @@
     border-color: transparent;
     background-color: transparent;
     background-image: none;
-    @include draw_shadows(inset 0 1px rgba(255, 255, 255, 0), $blank_edge);
     text-shadow: none;
     icon-shadow: none;
   }
