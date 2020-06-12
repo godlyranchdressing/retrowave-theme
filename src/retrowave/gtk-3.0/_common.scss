@@ -3480,12 +3480,18 @@ radio {
   &:hover {
     @include button(hover-alt, $base_color);
   }
-  &:checked,
-  &:checked:hover {
+  &:checked, &:indeterminate,
+  &:checked:hover, &:indeterminate:hover {
     @include highlight_color($c1, $c2, "to bottom");
     box-shadow: _glow($c1, $c2, $both: true);
     @if $glow == "true" {
       @extend %glow_sunset;
+    }
+  }
+  &:checked, &:indeterminate {
+    &:disabled {
+      @include highlight_color($c1: desaturate($c1, 90%), $c2: desaturate($c2, 90%), $d: "to bottom");
+      box-shadow: none;
     }
   }
   &:checked:backdrop {
@@ -3697,6 +3703,8 @@ treeview.view radio:selected {
   }
 
   &:disabled {
+    @include highlight_color($c1: desaturate($neon_pink, 90%), $c2: desaturate($neon_blue, 90%));
+    box-shadow: none;
     background-color: transparent;
     border-color: transparent;
   }
@@ -3964,6 +3972,13 @@ scale {
       @include highlight_color($d: "to bottom");
       @if $glow == "true" {
         @extend %glow_vertical;
+      }
+    }
+
+    &:disabled {
+      highlight {
+        @include highlight_color($c1: desaturate($neon_pink, 90%), $c2: desaturate($neon_blue, 90%), $d: "to bottom");
+        box-shadow: none;
       }
     }
 
@@ -5765,6 +5780,28 @@ headerbar.selection-mode button.titlebutton,
     }
   }
 
+  @keyframes glow_green {
+    $c1: $success_color;
+    $c2: $success_color;
+    0% {
+      box-shadow: 0 0 $b1 $l1 transparentize($c1, $a1);
+    }
+    100% {
+      box-shadow: 0 0 $b1 $l2 transparentize($c1, $a2);
+    }
+  }
+
+  @keyframes glow_red {
+    $c1: $error_color;
+    $c2: $error_color;
+    0% {
+      box-shadow: 0 0 $b1 $l1 transparentize($c1, $a1);
+    }
+    100% {
+      box-shadow: 0 0 $b1 $l2 transparentize($c1, $a2);
+    }
+  }
+
   %glow_horizontal {
     animation: glow_horizontal 2s infinite linear alternate;
   }
@@ -5783,6 +5820,14 @@ headerbar.selection-mode button.titlebutton,
 
   %glow_pink {
     animation: glow_pink 2s infinite linear alternate;
+  }
+
+  %glow_green {
+    animation: glow_green 2s infinite linear alternate;
+  }
+
+  %glow_red {
+    animation: glow_red 2s infinite linear alternate;
   }
 }
 
@@ -6112,5 +6157,17 @@ popover.background {
   &:not(.anything-else) {
     background-color: $popover_bg_color;
     border: 1px solid $borders_color;
+  }
+}
+
+@if $glow == 'true' {
+  button {
+    &.suggested-action, &.default {
+      @extend %glow_green;
+    }
+
+    &.destructive-action {
+      @extend %glow_red;
+    }
   }
 }
