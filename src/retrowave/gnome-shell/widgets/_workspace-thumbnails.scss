@@ -26,7 +26,13 @@
 
 // selected indicator
 .workspace-thumbnail-indicator {
-  @include include_asset("neon", "aura_transparent", $reset: true, $width: 3px, $slice: 4);
+  @include include_asset(
+    "neon",
+    "aura_transparent",
+    $reset: true,
+    $width: 3px,
+    $slice: 4
+  );
   border-radius: 3px;
   padding: 0px;
   // background-color: transparentize($selected_bg_color, 0.9);

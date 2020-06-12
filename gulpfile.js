@@ -2,8 +2,8 @@ const gulp = require("gulp");
 const sass = require("gulp-sass");
 const copy = require("gulp-copy");
 const shell = require("gulp-shell");
-const clean = require('gulp-clean');
-const run = require('child_process').exec;
+const clean = require("gulp-clean");
+const run = require("child_process").exec;
 const zip = require("gulp-zip");
 //
 const src = "src";
@@ -37,35 +37,29 @@ gulp.task("styles", () => {
 });
 
 gulp.task("assets", () => {
-  return gulp
-    .src(src + "/**/**/assets/*")
-    .pipe(gulp.dest(dest));
+  return gulp.src(src + "/**/**/assets/*").pipe(gulp.dest(dest));
 });
 
 gulp.task("zip", () => {
-  return gulp
-    .src("dist/**")
-    .pipe(zip("theme.zip"))
-    .pipe(gulp.dest("."));
+  return gulp.src("dist/**").pipe(zip("theme.zip")).pipe(gulp.dest("."));
 });
 
 gulp.task("dev-gtk3", () => {
-  return gulp.watch(src + "/**/**/*.scss", done => {
+  return gulp.watch(src + "/**/**/*.scss", (done) => {
     gulp.series(["styles"])(done);
-    run('gtk3-widget-factory');
+    run("gtk3-widget-factory");
   });
 });
 
 gulp.task("dev-gtk2", () => {
-  return gulp.watch(src + "/**/gtk-2.0/*", done => {
+  return gulp.watch(src + "/**/gtk-2.0/*", (done) => {
     gulp.series(["gtk2"])(done);
-    run('awf-gtk2');
+    run("awf-gtk2");
   });
 });
 
-gulp.task('clean', function () {
-  return gulp.src("./dist")
-      .pipe(clean({force: true}))
+gulp.task("clean", function () {
+  return gulp.src("./dist").pipe(clean({ force: true }));
 });
 
 gulp.task(

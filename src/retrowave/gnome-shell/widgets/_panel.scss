@@ -1,11 +1,10 @@
 /* Top Bar */
 // a.k.a. the panel
 
-$panel_corner_radius: $base_border_radius+1;
+$panel_corner_radius: $base_border_radius + 1;
 $panel_bg_color: #000;
 $panel_fg_color: #ccc;
 $panel_height: 1.86em;
-
 
 #panel {
   background-color: $panel_bg_color;
@@ -26,7 +25,8 @@ $panel_height: 1.86em;
   }
 
   // spacing between activities, app menu and such
-  #panelLeft, #panelCenter {
+  #panelLeft,
+  #panelCenter {
     spacing: $base_spacing;
   }
 
@@ -37,7 +37,9 @@ $panel_height: 1.86em;
     -panel-corner-border-width: 2px;
     -panel-corner-border-color: transparent;
 
-    &:active, &:overview, &:focus {
+    &:active,
+    &:overview,
+    &:focus {
       -panel-corner-border-color: $focus_color;
     }
   }
@@ -54,13 +56,18 @@ $panel_height: 1.86em;
       background-color: lighten($panel_bg_color, 5%);
     }
 
-    &:active, &:overview, &:focus, &:checked {
+    &:active,
+    &:overview,
+    &:focus,
+    &:checked {
       background-color: transparent;
       box-shadow: none;
       color: lighten($panel_fg_color, 20%);
       @include include_asset("neon", "underline", $reset: false, $slice: 4);
 
-      & > .system-status-icon { icon-shadow: none; }
+      & > .system-status-icon {
+        icon-shadow: none;
+      }
     }
 
     // status area icons
@@ -81,13 +88,20 @@ $panel_height: 1.86em;
     .unlock-screen &,
     .login-screen & {
       color: lighten($fg_color, 10%);
-      &:focus, &:hover, &:active { color: lighten($fg_color, 10%); }
+      &:focus,
+      &:hover,
+      &:active {
+        color: lighten($fg_color, 10%);
+      }
     }
   }
 
   .panel-button.clock-display {
     // Move highlight from .panel-button to .clock
-    &:active, &:overview, &:focus, &:checked {
+    &:active,
+    &:overview,
+    &:focus,
+    &:checked {
       box-shadow: none;
 
       .clock {
@@ -109,11 +123,15 @@ $panel_height: 1.86em;
 
   // indicator for active
   .screencast-indicator,
-  .remote-access-indicator { color: $warning_color; }
+  .remote-access-indicator {
+    color: $warning_color;
+  }
 }
 
 // App Menu
 #appMenu {
   spacing: $base_spacing;
-  .label-shadow { color: transparent; }
+  .label-shadow {
+    color: transparent;
+  }
 }

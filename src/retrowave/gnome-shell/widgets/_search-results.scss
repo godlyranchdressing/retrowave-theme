@@ -12,7 +12,7 @@
   spacing: $base_margin * 2;
 
   // separator
-  .search-section-separator { 
+  .search-section-separator {
     // height: 1px;
     // background-color: $osd_outer_borders_color;
     height: 0;
@@ -23,7 +23,8 @@
 // content
 .search-section-content {
   @extend %osd_panel;
-  text-shadow: 0 1px if($variant == 'light', rgba(255,255,255,0.2), rgba(0,0,0,0.2));
+  text-shadow: 0 1px
+    if($variant == "light", rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.2));
   color: $osd_fg_color;
   padding: $base_padding * 3;
   // This is the space between the provider icon and the results container
@@ -36,13 +37,13 @@
   &:focus,
   &:hover,
   &:selected {
-    background-color: transparentize($osd_fg_color, .9);
+    background-color: transparentize($osd_fg_color, 0.9);
     transition-duration: 200ms;
   }
 
   &:active,
   &:checked {
-    background-color: transparentize(darken($osd_bg_color, 10%), .1);
+    background-color: transparentize(darken($osd_bg_color, 10%), 0.1);
   }
 }
 

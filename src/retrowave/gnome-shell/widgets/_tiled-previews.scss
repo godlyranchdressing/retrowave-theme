@@ -2,7 +2,13 @@
 .tile-preview {
   $c: $neon_blue;
   $tile_corner_radius: $base_border_radius + 1px;
-  @include include_asset("neon", "aura_semi_transparent", $reset: true, $width: 3px, $slice: 4);
+  @include include_asset(
+    "neon",
+    "aura_semi_transparent",
+    $reset: true,
+    $width: 3px,
+    $slice: 4
+  );
 
   &-left.on-primary {
     border-radius: $tile_corner_radius 0 0 0;

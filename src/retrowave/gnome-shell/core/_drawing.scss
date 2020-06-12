@@ -1,7 +1,6 @@
 // Drawing mixins
 
 // generic drawing of more complex things
-
 @mixin use_image($path, $name, $reset: false) {
   @if ($reset) {
     background-color: transparent;
@@ -240,23 +239,25 @@
 }
 
 // overview icons
-@mixin overview-icon($color: $osd_fg_color, $bg: $focus_color) {
+@mixin overview-icon(
+  $c1: $osd_fg_color,
+  $c2: mix(black, $focus_color)
+) {
   .overview-icon {
     @extend %icon_tile;
-    color: $color;
+    color: $c1;
   }
 
   &:hover,
   &:selected {
     .overview-icon {
-      background-color: transparentize($bg, 0.7);
+      background-color: transparentize($c2, 0.3);
     }
   }
 
   &:focus {
     .overview-icon {
-      background-color: transparentize($bg, 0.5);
-      // border-color: $focus_color;
+      background-color: transparentize($c2, 0.5);
     }
   }
 

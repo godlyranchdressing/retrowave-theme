@@ -20,7 +20,7 @@
   background: transparent;
   height: 50px;
   background-size: 32px;
-  border: 1px solid transparentize($osd_fg_color,0.85);
+  border: 1px solid transparentize($osd_fg_color, 0.85);
   border-radius: 0;
 }
 
@@ -30,6 +30,12 @@
 .ws-switcher-active-left,
 .ws-switcher-active-right {
   height: 52px;
-  @include include_asset("neon", "aura_more_transparent_bg", $reset: true, $width: 3px, $slice: 4);
+  @include include_asset(
+    "neon",
+    "aura_more_transparent_bg",
+    $reset: true,
+    $width: 3px,
+    $slice: 4
+  );
   color: $selected_fg_color;
 }

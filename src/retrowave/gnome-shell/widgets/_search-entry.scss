@@ -6,17 +6,39 @@ $search_entry_height: 36px;
 %search_entry,
 .search-entry {
   width: $search_entry_width;
-  padding: $base_padding+1 $base_padding+3;
+  padding: $base_padding + 1 $base_padding + 3;
   border-radius: 0;
-  color: transparentize($fg_color,0.3);
+  color: transparentize($fg_color, 0.3);
   background-color: $bg_color;
   border-color: $borders_color;
 
-  @include include_asset("entry", "normal", $reset: true, $width: 1px, $slice: 4);
-  &:hover { @include include_asset("entry", "hover", $reset: true, $width: 1px, $slice: 4); }
-  &:focus { @include include_asset("entry", "active", $reset: true, $width: 1px, $slice: 4); }
+  @include include_asset(
+    "entry",
+    "normal",
+    $reset: true,
+    $width: 1px,
+    $slice: 4
+  );
+  &:hover {
+    @include include_asset(
+      "entry",
+      "hover",
+      $reset: true,
+      $width: 1px,
+      $slice: 4
+    );
+  }
+  &:focus {
+    @include include_asset(
+      "entry",
+      "active",
+      $reset: true,
+      $width: 1px,
+      $slice: 4
+    );
+  }
 
-  .search-entry-icon { 
+  .search-entry-icon {
     icon-size: $base_icon_size;
     padding: 0 4px;
     color: inherit;

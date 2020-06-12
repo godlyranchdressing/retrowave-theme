@@ -16,7 +16,10 @@
   }
 
   .modal-dialog-linked-button {
-    &, &:first-child, &:last-child, &:first-child:last-child {
+    &,
+    &:first-child,
+    &:last-child,
+    &:first-child:last-child {
       @include include_asset("button", "dialog-button-normal", $reset: true);
 
       &:hover,

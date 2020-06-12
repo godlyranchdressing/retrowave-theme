@@ -7,7 +7,8 @@
     "build": "gulp build",
     "clean": "gulp clean",
     "gtk3": "gulp dev-gtk3",
-    "gtk2": "gulp dev-gtk2"
+    "gtk2": "gulp dev-gtk2",
+    "format": "prettier --write \"**/*.scss\""
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
     "gulp-exec": "^4.0.0",
     "gulp-sass": "^4.0.2",
     "gulp-shell": "^0.8.0",
-    "gulp-zip": "^5.0.1"
+    "gulp-zip": "^5.0.1",
+    "prettier": "^2.0.5"
   }
 }

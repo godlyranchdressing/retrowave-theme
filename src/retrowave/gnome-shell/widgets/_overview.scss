@@ -2,7 +2,7 @@
 
 #overview {
   spacing: 24px;
-  background-color: transparent;
+  background-color: transparentize($popover_active_color, 0.2);  
 }
 
 .overview-controls {

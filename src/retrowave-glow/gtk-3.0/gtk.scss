@@ -4,12 +4,13 @@
 //   you need a subtle shade
 // - if you need to inverse a color function use the @if directive to match for dark $variant
 
-$glow: "false";
+$glow: "true";
 $variant: "dark";
+$path: "../../retrowave/gtk-3.0";
 
-@import "variables";
-@import "colors";
-@import "drawing";
-@import "common";
-@import "colors-public";
-@import "apps";
+@import "../../retrowave/gtk-3.0/variables";
+@import "../../retrowave/gtk-3.0/colors";
+@import "../../retrowave/gtk-3.0/drawing";
+@import "../../retrowave/gtk-3.0/common";
+@import "../../retrowave/gtk-3.0/colors-public";
+@import "../../retrowave/gtk-3.0/apps";
