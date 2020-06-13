@@ -19,6 +19,7 @@ $top_hilight: $borders_edge;
 // $dark_fill: mix($borders_color, $bg_color, 50%);
 $dark_fill: $base_color;
 $headerbar_color: $bg_color;
+$notebook_bg_color: #241B2F;
 $menu_color: mix($bg_color, $base_color, 20%);
 $popover_bg_color: $bg_color;
 $popover_hover_color: lighten($bg_color, 5%);

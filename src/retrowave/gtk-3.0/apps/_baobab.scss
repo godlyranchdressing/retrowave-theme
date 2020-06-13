@@ -1,0 +1,5 @@
+levelbar {
+  &.continuous block.filled {
+    @extend %scale_highlight;
+  }
+}

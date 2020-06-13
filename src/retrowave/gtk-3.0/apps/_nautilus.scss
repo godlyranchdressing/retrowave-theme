@@ -249,21 +249,6 @@ flowboxchild:selected > .icon-item-background {
   border-radius: 4px 4px 4px 4px;
 }
 
-.nautilus-window grid paned overlay notebook tabs tab.reorderable-page {
-  border-left-style: none;
-  border-right-style: none;
-  border-bottom: 3px solid;
-
-  &:not(:checked) {
-    // specificity dump
-    border-color: transparent;
-
-    &:hover {
-      border-color: $selected_bg_color;
-    }
-  }
-}
-
 .nautilus-window placessidebar > viewport.frame {
   border: none;
 }

@@ -1,12 +1,27 @@
 // Drawing mixins
 
 // generic drawing of more complex things
+
+@mixin tab_background(
+  $d1,
+  $d2,
+  $bg: $tab_active_color,
+  $c1: $neon_pink,
+  $c2: $neon_blue,
+  $height: 3px,
+) {
+  background: linear-gradient(#{$d1}, $c1, $c2), #{$bg};
+  background-repeat: no-repeat;
+  background-position: #{$d2};
+  background-size: if($d2 == "bottom" or $d2 == "top", 100% #{$height}, #{$height} 100%);
+}
+
 @function _glow(
   $c1: $neon_blue,
   $c2: $neon_pink,
   $both: false,
   $alpha: 0.75,
-  $blur: 3px
+  $blur: 4px
 ) {
   @if ($both) {
     @return 0 2px $blur 0 transparentize($c1, $alpha),
@@ -46,51 +61,48 @@
   @return $fc;
 }
 
-@mixin entry($t, $fc: $focus_color, $edge: none) {
+@mixin entry($t, $fc: $focus_color) {
   //
   // Entries drawing function
   //
   // $t: entry type
   // $fc: focus color
-  // $edge: set to none to not draw the bottom edge or specify a color to not
-  //        use the default one
   //
   // possible $t values:
   // normal, focus, insensitive, backdrop, backdrop-insensitive, osd, osd-focus, osd-backdrop, block_cursor;
   //
 
-  $_blank_edge: if($edge == none, none, 0 1px transparentize($edge, 1));
-  $_entry_edge: if($edge == none, none, _widget_edge($edge));
+  $sunken_shadow: inset 0 2px 2px 2px $shadow_color;
 
   @if $t==normal {
     color: $text_color;
     border-color: $borders_color;
     background-color: $base_color;
-    @include _shadows($_entry_edge);
+    @include _shadows($sunken_shadow);
     // for the transition to work the number of shadows in different states needs to match, hence the transparent shadow here.
   }
   @if $t==focus {
     border-color: entry_focus_border($fc);
-    box-shadow: 0 0 2px 2px transparentize($fc, 0.75);
+    @include _shadows(_glow($fc), $sunken_shadow);
     outline: none;
   }
   @if $t==insensitive {
     color: $insensitive_fg_color;
     border-color: $borders_color;
     background-color: $insensitive_bg_color;
-    box-shadow: $_entry_edge;
+    box-shadow: none;
   }
   @if $t==backdrop {
     color: $backdrop_text_color;
     border-color: $backdrop_borders_color;
     background-color: $backdrop_base_color;
-    box-shadow: $_blank_edge;
+    box-shadow: none;
   }
   @if $t==backdrop-insensitive {
     color: $backdrop_insensitive_color;
     border-color: $backdrop_borders_color;
     background-color: $insensitive_bg_color;
-    box-shadow: $_blank_edge;
+    box-shadow: none;
   }
   @if $t==block_cursor {
     color: $base_color;
@@ -174,19 +186,18 @@
   //
 
   $_shadow: rgba(0, 0, 0, 0.9);
-  text-shadow: -1px 1px 2px black;
+  text-shadow: -1px 1px 2px _text_shadow_color($tc);
   -gtk-icon-shadow: -1px 1px $_shadow;
 }
 
-@mixin button($t, $c: $bg_color, $tc: $fg_color, $edge: none) {
+@mixin button($t, $c: $bg_color, $tc: $fg_color, $glow: false) {
   //
   // Button drawing function
   //
   // $t:    button type,
   // $c:    base button color for colored* types
   // $tc:   optional text color for colored* types
-  // $edge: set to none to not draw the bottom edge or specify a color to not
-  //        use the default one
+  // $glow: wheter the glow effect should be applied
   //
   // possible $t values:
   // normal, hover, active, insensitive, insensitive-active,
@@ -195,6 +206,7 @@
   //
   // This mixin sets the $button_fill global variable which containts the button background-image
   //
+  $_glow: if($glow==true, _glow($c), none);
   $_hilight_color: _button_hilight_color($c);
   $_retro_highlight: inset 0 2px _button_hilight_color($c),
     inset -2px 0 _button_hilight_color($c),
@@ -220,7 +232,7 @@
       $borders_color;
     background-color: $c;
     @include _button_text_shadow($tc, $c);
-    @include _shadows($_retro_highlight);
+    @include _shadows($_retro_highlight, $_glow);
   } @else if $t==hover {
     //
     // hovered button
@@ -243,7 +255,7 @@
       _border_color($c)
     );
     @include _button_text_shadow($tc, $c);
-    @include _shadows($_retro_highlight);
+    @include _shadows($_retro_highlight, $_glow);
   }
 
   @if $t==normal-alt {
@@ -325,11 +337,7 @@
     //
     // insensitive pushed button
     //
-    $_bg: if(
-      $variant == "light",
-      darken(mix($c, $base_color, 85%), 8%),
-      darken(mix($c, $base_color, 85%), 6%)
-    );
+    $_bg: darken(mix($c, $base_color, 85%), 6%);
     $_bc: if($c != $bg_color, _border_color($c), $insensitive_borders_color);
 
     label,
@@ -347,7 +355,7 @@
     // backdrop button
     //
     $_bg: if($c != $bg_color, $c, $backdrop_bg_color);
-    $_bc: if($variant == "light", $c, _border_color($c));
+    $_bc: _border_color($c);
 
     label,
     & {
@@ -363,12 +371,8 @@
     //
     // backdrop pushed button
     //
-    $_bg: if(
-      $variant == "light",
-      darken(mix($c, $base_color, 85%), 8%),
-      darken(mix($c, $base_color, 85%), 4%)
-    );
-    $_bc: if($variant == "light", $_bg, _border_color($c));
+    $_bg: darken(mix($c, $base_color, 85%), 8%);
+    $_bc: _border_color($c);
 
     label,
     & {
@@ -384,7 +388,7 @@
     //
 
     $_bg: if($c != $bg_color, mix($c, $base_color, 85%), $insensitive_bg_color);
-    $_bc: if($variant == "light", $_bg, _border_color($c));
+    $_bc: _border_color($c);
 
     label,
     & {
@@ -407,12 +411,8 @@
     // backdrop insensitive pushed button
     //
 
-    $_bg: if(
-      $variant == "light",
-      darken(mix($c, $base_color, 85%), 8%),
-      darken(mix($c, $base_color, 85%), 4%)
-    );
-    $_bc: if($variant == "light", $_bg, _border_color($c));
+    $_bg: darken(mix($c, $base_color, 85%), 4%);
+    $_bc: _border_color($c);
 
     label {
       color: if(
