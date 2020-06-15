@@ -20,19 +20,27 @@
     &:first-child,
     &:last-child,
     &:first-child:last-child {
-      @include include_asset("button", "dialog-button-normal", $reset: true);
+      @include use_border_image("button", "dialog-button-normal", $reset: true);
 
       &:hover,
       &:focus {
-        @include include_asset("button", "dialog-button-hover", $reset: true);
+        @include use_border_image(
+          "button",
+          "dialog-button-hover",
+          $reset: true
+        );
       }
 
       &:active {
-        @include include_asset("button", "dialog-button-active", $reset: true);
+        @include use_border_image(
+          "button",
+          "dialog-button-active",
+          $reset: true
+        );
       }
       &:insensitive,
       &:insensitive:focus {
-        @include include_asset(
+        @include use_border_image(
           "button",
           "dialog-button-insensitive",
           $reset: true
@@ -53,15 +61,15 @@
 
   // Shutdown Button
   .modal-dialog-linked-button:last-child {
-    @include include_asset("button", "shutdown-normal", $reset: true);
+    @include use_border_image("button", "shutdown-normal", $reset: true);
     &:focus {
-      @include include_asset("button", "shutdown-normal", $reset: true);
+      @include use_border_image("button", "shutdown-normal", $reset: true);
     }
     &:hover {
-      @include include_asset("button", "shutdown-hover", $reset: true);
+      @include use_border_image("button", "shutdown-hover", $reset: true);
     }
     &:active {
-      @include include_asset("button", "shutdown-active", $reset: true);
+      @include use_border_image("button", "shutdown-active", $reset: true);
     }
   }
 }

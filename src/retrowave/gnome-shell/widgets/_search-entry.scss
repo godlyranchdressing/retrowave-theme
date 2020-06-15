@@ -12,7 +12,7 @@ $search_entry_height: 36px;
   background-color: $bg_color;
   border-color: $borders_color;
 
-  @include include_asset(
+  @include use_border_image(
     "entry",
     "normal",
     $reset: true,
@@ -20,7 +20,7 @@ $search_entry_height: 36px;
     $slice: 4
   );
   &:hover {
-    @include include_asset(
+    @include use_border_image(
       "entry",
       "hover",
       $reset: true,
@@ -29,7 +29,7 @@ $search_entry_height: 36px;
     );
   }
   &:focus {
-    @include include_asset(
+    @include use_border_image(
       "entry",
       "active",
       $reset: true,

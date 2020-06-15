@@ -3,16 +3,5 @@
 $ripple_size: 50px;
 
 .ripple-box {
-  $c: $focus_color;
-  background-color: transparentize($c, 0.7);
-  box-shadow: 0 0 2px 4px $neon_blue;
-  // plus + 2px for the border (box-shadow)
-  width: $ripple_size + 2px;
-  height: $ripple_size + 2px;
-  border-radius: 0 0 $ripple_size + 2px 0; // radius equals the size of the box to give us the curve
-
-  // just a simple change to the border radius position
-  &:rtl {
-    border-radius: 0 0 0 $ripple_size + 2px;
-  }
+  @include use_border_image("neon", "corner", $reset: true);
 }

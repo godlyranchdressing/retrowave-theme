@@ -2,7 +2,7 @@
 .tile-preview {
   $c: $neon_blue;
   $tile_corner_radius: $base_border_radius + 1px;
-  @include include_asset(
+  @include use_border_image(
     "neon",
     "aura_semi_transparent",
     $reset: true,

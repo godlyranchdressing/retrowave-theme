@@ -100,19 +100,19 @@
 .message-media-control {
   padding: 10px 15px;
 
-  @include use_image("button", "small-normal", $reset: true);
+  @include use_background_image("button", "small-normal", $reset: true);
 
   &:hover,
   &:focus {
-    @include use_image("button", "small-hover", $reset: true);
+    @include use_background_image("button", "small-hover", $reset: true);
   }
 
   &:active {
-    @include use_image("button", "small-active", $reset: true);
+    @include use_background_image("button", "small-active", $reset: true);
   }
   &:insensitive,
   &:insensitive:focus {
-    @include use_image("button", "small-insensitive", $reset: true);
+    @include use_background_image("button", "small-insensitive", $reset: true);
   }
 }
 

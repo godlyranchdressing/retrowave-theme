@@ -19,6 +19,7 @@ $popover_arrow_height: 12px;
 .popup-menu {
   min-width: 15em;
   color: $fg_color;
+  @include draw_button_text_shadow();
 
   //.popup-status-menu-item { font-weight: normal;  color: pink; } //dunno what that is
   &.panel-menu {
@@ -83,12 +84,7 @@ $popover_arrow_height: 12px;
 
 // popover submenus
 .popup-sub-menu {
-  background-color: darken($bg_color, 3%);
-  box-shadow: none;
-  border-top: 1px solid black;
-  border-bottom: 1px solid transparentize($borders_color, 0.2);
-  border-left: 2px solid $borders_color;
-  @include include_asset("background", "active", $reset: true);
+  @include use_border_image("background", "active", $reset: true);
 }
 
 // container for radio and check boxes

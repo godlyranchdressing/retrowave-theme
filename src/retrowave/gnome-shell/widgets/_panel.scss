@@ -63,7 +63,7 @@ $panel_height: 1.86em;
       background-color: transparent;
       box-shadow: none;
       color: lighten($panel_fg_color, 20%);
-      @include include_asset("neon", "underline", $reset: false, $slice: 4);
+      @include use_border_image("neon", "underline", $reset: false, $slice: 4);
 
       & > .system-status-icon {
         icon-shadow: none;

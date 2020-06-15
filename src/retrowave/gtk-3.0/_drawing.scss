@@ -8,12 +8,16 @@
   $bg: $tab_active_color,
   $c1: $neon_pink,
   $c2: $neon_blue,
-  $height: 3px,
+  $height: 3px
 ) {
   background: linear-gradient(#{$d1}, $c1, $c2), #{$bg};
   background-repeat: no-repeat;
   background-position: #{$d2};
-  background-size: if($d2 == "bottom" or $d2 == "top", 100% #{$height}, #{$height} 100%);
+  background-size: if(
+    $d2 == "bottom" or $d2 == "top",
+    100% #{$height},
+    #{$height} 100%
+  );
 }
 
 @function _glow(

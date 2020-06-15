@@ -36,12 +36,12 @@ $app_grid_fg_color: #fff;
 
 /* App Folders */
 .app-well-app.app-folder {
-  @include include_asset("background", "light_is_around", $reset: true);
+  @include use_border_image("background", "light_is_around", $reset: true);
 }
 
 // expanded folder
 .app-folder-dialog {
-  @include include_asset("background", "light_is_around", $reset: true);
+  @include use_border_image("background", "light_is_around", $reset: true);
   spacing: 12px;
   padding: 12px;
 

@@ -5,6 +5,8 @@
 $base_color: #372d4b;
 $text_color: #a6a2aa;
 $bg_color: #2a2139;
+$lighter_bg_color: #312648;
+$tab_active_color: #36243e;
 $fg_color: #ccc;
 
 $selected_fg_color: #ffffff;
@@ -19,11 +21,10 @@ $top_hilight: $borders_edge;
 // $dark_fill: mix($borders_color, $bg_color, 50%);
 $dark_fill: $base_color;
 $headerbar_color: $bg_color;
-$notebook_bg_color: #241B2F;
+$notebook_bg_color: #241b2f;
 $menu_color: mix($bg_color, $base_color, 20%);
 $popover_bg_color: $bg_color;
 $popover_hover_color: lighten($bg_color, 5%);
-$tab_active_color: #36243e;
 
 $scrollbar_bg_color: mix($base_color, $bg_color, 50%);
 $scrollbar_slider_color: mix($fg_color, $bg_color, 60%);

@@ -30,7 +30,7 @@
 .ws-switcher-active-left,
 .ws-switcher-active-right {
   height: 52px;
-  @include include_asset(
+  @include use_border_image(
     "neon",
     "aura_more_transparent_bg",
     $reset: true,

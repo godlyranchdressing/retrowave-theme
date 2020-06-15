@@ -6,7 +6,7 @@ $dash_border_radius: $modal_radius * 1.5;
 
 #dash {
   @extend %overview_panel;
-  @include include_asset("background", "no_left_border", $reset: true);
+  @include use_border_image("background", "no_left_border", $reset: true);
   @include fontsize($base_font_size - 2);
   padding: ($dash_spacing / 2) 0;
 
@@ -30,7 +30,7 @@ $dash_border_radius: $modal_radius * 1.5;
 
 // OSD Tooltip
 .dash-label {
-  @include include_asset("background", "tooltip", $reset: true, $slice: 5);
+  @include use_border_image("background", "tooltip", $reset: true, $slice: 5);
   color: $osd_fg_color;
   padding: $base_padding $base_padding + 2px;
   text-align: center;
@@ -55,13 +55,13 @@ $dash_border_radius: $modal_radius * 1.5;
   }
 
   &:hover .overview-icon StIcon {
-    @include include_asset("button", "hover", $reset: true);
+    @include use_border_image("button", "hover", $reset: true);
   }
 
   &:focus,
   &:checked {
     .overview-icon StIcon {
-      @include include_asset("button", "active", $reset: true);
+      @include use_border_image("button", "active", $reset: true);
     }
   }
 }

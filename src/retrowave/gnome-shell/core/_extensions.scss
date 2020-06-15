@@ -1,6 +1,6 @@
 @each $position in ("top", "bottom", "left", "right") {
   #dashtodockContainer.dashtodock.#{$position} #dash {
-    @include include_asset(
+    @include use_border_image(
       "background",
       "no_#{$position}_border",
       $reset: true

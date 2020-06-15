@@ -21,7 +21,7 @@
 
     &:selected {
       color: $osd_fg_color;
-      @include include_asset(
+      @include use_border_image(
         "neon",
         "aura_bg",
         $reset: true,

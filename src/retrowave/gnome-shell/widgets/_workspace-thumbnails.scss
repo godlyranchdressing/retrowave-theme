@@ -26,7 +26,7 @@
 
 // selected indicator
 .workspace-thumbnail-indicator {
-  @include include_asset(
+  @include use_border_image(
     "neon",
     "aura_transparent",
     $reset: true,

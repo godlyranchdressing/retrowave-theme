@@ -1,7 +1,7 @@
 // Drawing mixins
 
 // generic drawing of more complex things
-@mixin use_image($path, $name, $reset: false) {
+@mixin use_background_image($path, $name, $reset: false) {
   @if ($reset) {
     background-color: transparent;
     border-color: transparent;
@@ -20,7 +20,7 @@
   background-image: url("assets#{$path}#{$name}.svg");
 }
 
-@mixin include_asset($path, $name, $reset: false, $width: 1px, $slice: 6) {
+@mixin use_border_image($path, $name, $reset: false, $width: 1px, $slice: 6) {
   @if ($reset) {
     background-color: transparent;
     border-color: transparent;
@@ -49,30 +49,10 @@
   }
 }
 
-@function draw_widget_edge($c: $borders_edge) {
-  // outer highlight "used" on most widgets
-  @return 0 1px $c;
-}
-
 // provide font size in rem, with px fallback
 @mixin fontsize($size: 24, $base: 16) {
   font-size: round($size) + pt;
   //font-size: ($size / $base) * 1rem;
-}
-
-@mixin draw_shadows($shadow1, $shadow2: none, $shadow3: none, $shadow4: none) {
-  //
-  // Helper function to stack up to 4 box-shadows;
-  //
-  @if $shadow4!=none {
-    box-shadow: $shadow1, $shadow2, $shadow3, $shadow4;
-  } @else if $shadow3!=none {
-    box-shadow: $shadow1, $shadow2, $shadow3;
-  } @else if $shadow2!=none {
-    box-shadow: $shadow1, $shadow2;
-  } @else {
-    box-shadow: $shadow1;
-  }
 }
 
 // entries
@@ -107,14 +87,6 @@
 }
 
 // buttons
-
-@function draw_border_color($c) {
-  //
-  // colored buttons want the border form the base color
-  //
-  @return if($variant == "light", darken($c, 18%), darken($c, 4%));
-}
-
 @function draw_text_shadow_color($tc: $fg_color, $bg: $bg_color) {
   //
   // calculate the color of text shadows
@@ -130,25 +102,6 @@
   }
 }
 
-@function draw_button_hilight_color($c) {
-  //
-  // calculate the right top hilight color for buttons
-  //
-  // $c: base color;
-  //
-  @if lightness($c) >90% {
-    @return white;
-  } @else if lightness($c) >80% {
-    @return rgba(255, 255, 255, 0.7);
-  } @else if lightness($c) >50% {
-    @return rgba(255, 255, 255, 0.5);
-  } @else if lightness($c) >40% {
-    @return rgba(255, 255, 255, 0.3);
-  } @else {
-    @return rgba(255, 255, 255, 0.1);
-  }
-}
-
 @mixin draw_button_text_shadow($tc: $fg_color, $bg: $bg_color) {
   //
   // helper function for the text emboss effect
@@ -159,14 +112,8 @@
   //
 
   $shadow: draw_text_shadow_color($tc, $bg);
-
-  @if lightness($tc) <50% {
-    text-shadow: 0 1px $shadow;
-    icon-shadow: 0 1px $shadow;
-  } @else {
-    text-shadow: 0 -1px $shadow;
-    icon-shadow: 0 -1px $shadow;
-  }
+  text-shadow: -1px 1px 2px $shadow;
+  icon-shadow: -1px 1px 2px $shadow;
 }
 
 @mixin button($t, $c: $bg_color, $tc: $fg_color) {
@@ -184,29 +131,30 @@
   //
 
   $hilight_color: draw_button_hilight_color($c);
+  $text_shadow: draw_button_text_shadow($tc, $c);
 
   // normal button
   @if $t==normal {
     color: $tc;
-    text-shadow: 0 1px $text_shadow_color;
-    icon-shadow: 0 1px $text_shadow_color;
-    @include include_asset("button", "normal", $reset: true);
+    text-shadow: $text_shadow;
+    icon-shadow: $text_shadow;
+    @include use_border_image("button", "normal", $reset: true);
   }
 
   // focused button
   @if $t==focus {
     color: $tc;
-    text-shadow: 0 1px $text_shadow_color;
-    icon-shadow: 0 1px $text_shadow_color;
-    @include include_asset("button", "hover", $reset: true);
+    text-shadow: $text_shadow;
+    icon-shadow: $text_shadow;
+    @include use_border_image("button", "hover", $reset: true);
   }
 
   // hover button
   @else if $t==hover {
     color: $tc;
-    text-shadow: 0 1px $text_shadow_color;
-    icon-shadow: 0 1px $text_shadow_color;
-    @include include_asset("button", "hover", $reset: true);
+    text-shadow: $text_shadow;
+    icon-shadow: $text_shadow;
+    @include use_border_image("button", "hover", $reset: true);
   }
 
   // active button
@@ -214,7 +162,7 @@
     color: $tc;
     text-shadow: none;
     icon-shadow: none;
-    @include include_asset("button", "active", $reset: true);
+    @include use_border_image("button", "active", $reset: true);
   }
 
   // insensitive button
@@ -239,10 +187,7 @@
 }
 
 // overview icons
-@mixin overview-icon(
-  $c1: $osd_fg_color,
-  $c2: mix(black, $focus_color)
-) {
+@mixin overview-icon($c1: $osd_fg_color, $c2: mix(black, $focus_color)) {
   .overview-icon {
     @extend %icon_tile;
     color: $c1;

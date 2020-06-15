@@ -86,7 +86,8 @@ stage {
 
 // osd panels
 %osd_panel {
-  @include include_asset("background", "light_is_around", $reset: true);
+  @include use_border_image("background", "light_is_around", $reset: true);
+  @include draw_button_text_shadow();
   color: $osd_fg_color;
 }
 
