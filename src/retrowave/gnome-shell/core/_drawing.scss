@@ -1,12 +1,16 @@
 // Drawing mixins
 
 // generic drawing of more complex things
-@mixin use_background_image($path, $name, $reset: false) {
+@mixin use_background_image($path, $name, $reset: false, $size: false) {
   @if ($reset) {
     background-color: transparent;
     border-color: transparent;
     box-shadow: none;
     border-radius: 0;
+  }
+
+  @if ($size) {
+    background-size: $size;
   }
 
   @if ($name) {

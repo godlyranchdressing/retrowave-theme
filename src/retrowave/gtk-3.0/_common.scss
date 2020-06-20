@@ -5076,11 +5076,8 @@ infobar {
         color: $fg_color;
       }
 
-      background-color: desaturate(
-        darken(invert($selected_bg_color), 40%),
-        70%
-      );
-      border-color: lighten($borders_color, 10%);
+      background-color: darken(mix($base_color, $bg_color, 50%), 10%);
+      border-color: $borders_color;
     }
 
     text-shadow: none;
@@ -5433,6 +5430,7 @@ decoration {
   .tiled-right &,
   .tiled-bottom & {
     border-radius: 0;
+    border-width: 0px;
   }
 
   .popup & {

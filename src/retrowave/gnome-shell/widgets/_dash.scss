@@ -8,6 +8,7 @@ $dash_border_radius: $modal_radius * 1.5;
   @extend %overview_panel;
   @include use_border_image("background", "no_left_border", $reset: true);
   @include fontsize($base_font_size - 2);
+  border-left: none;
   padding: ($dash_spacing / 2) 0;
 
   .placeholder {
@@ -50,18 +51,18 @@ $dash_border_radius: $modal_radius * 1.5;
     }
   }
 
-  .overview-icon StIcon {
-    border: 1px solid transparent;
+  & .overview-icon StIcon {
+    @include use_background_image("button", "normal", $reset: true, $size: 52px);
   }
 
   &:hover .overview-icon StIcon {
-    @include use_border_image("button", "hover", $reset: true);
+    @include use_background_image("button", "hover", $reset: true);
   }
 
   &:focus,
   &:checked {
     .overview-icon StIcon {
-      @include use_border_image("button", "active", $reset: true);
+      @include use_background_image("button", "active", $reset: true);
     }
   }
 }
