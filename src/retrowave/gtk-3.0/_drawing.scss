@@ -210,7 +210,7 @@
   //
   // This mixin sets the $button_fill global variable which containts the button background-image
   //
-  $_glow: if($glow==true, _glow($c), none);
+  $_glow: if($glow, _glow($c), none);
   $_hilight_color: _button_hilight_color($c);
   $_retro_highlight: inset 0 2px _button_hilight_color($c),
     inset -2px 0 _button_hilight_color($c),

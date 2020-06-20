@@ -1,0 +1,111 @@
+/**********
+ * Switch *
+ **********/
+switch {
+  $c: $neon_blue;
+  font-weight: bold;
+  font-size: smaller;
+  outline-offset: -4px;
+  border-radius: 0px;
+  color: $fg_color;
+  background-color: $dark_fill;
+  box-shadow: inset 0 0 0 1px $borders_color;
+  text-shadow: 0 1px transparentize(black, 0.9);
+
+  image {
+    color: mix($dark_fill, $fg_color, 90%);
+  }
+
+  &:checked {
+    color: $selected_fg_color;
+    border-color: $selected_borders_color;
+    background-color: $c;
+    text-shadow: 0 1px transparentize($selected_borders_color, 0.5),
+      0 0 2px transparentize(white, 0.4);
+
+    @if ($glow) {
+      @extend %glow_blue;
+    } @else {
+      box-shadow: inset 0 0 0 1px _border_color($c),
+        inset 0 0 2px 2px $shadow_color,
+        _glow($c, $c, $both: true, $blur: 3px, $alpha: 0.7);
+    }
+
+    image {
+      color: mix(white, $c, 90%);
+    }
+  }
+
+  &:disabled {
+    color: $insensitive_fg_color;
+    border-color: $borders_color;
+    background-color: $insensitive_bg_color;
+    text-shadow: none;
+
+    image {
+      color: transparentize($insensitive_fg_color, 0.8);
+    }
+  }
+
+  &:backdrop {
+    color: $backdrop_fg_color;
+    border-color: $backdrop_dark_fill;
+    background-color: $backdrop_dark_fill;
+    text-shadow: none;
+    transition: $backdrop_transition;
+
+    &:checked {
+      $_c: desaturate($c, 90%);
+      border-color: _border_color($_c);
+      background-color: $_c;
+      box-shadow: none;
+
+      image {
+        color: mix(white, $_c, 90%);
+      }
+    }
+
+    &:disabled {
+      color: $backdrop_insensitive_color;
+      border-color: $backdrop_borders_color;
+      background-color: $insensitive_bg_color;
+    }
+  }
+
+  slider {
+    margin: -1px;
+    min-width: 24px;
+    min-height: 24px;
+    border: 1px solid;
+    border-radius: 0;
+    transition: $button_transition;
+    @include button(normal-alt, $base_color);
+    background-image: url("assets/switch-dash.svg");
+    background-size: 100%;
+    background-position: center;
+  }
+
+  &:hover slider {
+    @include button(hover-alt, $base_color);
+  }
+
+  &:disabled slider {
+    @include button(insensitive);
+  }
+
+  &:backdrop {
+    slider {
+      transition: $backdrop_transition;
+
+      @include button(backdrop);
+    }
+
+    &:checked slider {
+      border-color: $selected_borders_color;
+    }
+
+    &:disabled slider {
+      @include button(backdrop-insensitive);
+    }
+  }
+}

@@ -1,0 +1,382 @@
+/****************
+ * File chooser *
+ ****************/
+$_placesidebar_icons_opacity: 0.7;
+
+row image.sidebar-icon {
+  opacity: $_placesidebar_icons_opacity;
+} // dim the sidebar icons
+// see bug #786613 for details
+// on this oddity
+
+placessidebar {
+  > scrolledwindow.frame {
+    border-style: none;
+  }
+
+  row {
+    // Needs overriding of the GtkListBoxRow padding
+    min-height: 36px;
+    padding: 0px;
+
+    // Using margins/padding directly in the SidebarRow
+    // will make the animation of the new bookmark row jump
+    > revealer {
+      padding: 0 14px;
+    }
+
+    &:selected {
+      color: $selected_fg_color;
+    }
+
+    &:disabled {
+      color: $insensitive_fg_color;
+    }
+
+    &:backdrop {
+      color: $backdrop_fg_color;
+
+      &:selected {
+        color: $backdrop_selected_fg_color;
+      }
+
+      &:disabled {
+        color: $backdrop_insensitive_color;
+      }
+    }
+
+    image.sidebar-icon {
+      &:dir(ltr) {
+        padding-right: 8px;
+      }
+      &:dir(rtl) {
+        padding-left: 8px;
+      }
+    }
+
+    label.sidebar-label {
+      &:dir(ltr) {
+        padding-right: 2px;
+      }
+      &:dir(rtl) {
+        padding-left: 2px;
+      }
+    }
+
+    @at-root button.sidebar-button {
+      @extend %button_basic.flat;
+
+      @extend %button_selected.flat;
+
+      min-height: 26px;
+      min-width: 26px;
+      margin-top: 3px;
+      margin-bottom: 3px;
+      padding: 0;
+      border-radius: 100%;
+      -gtk-outline-radius: 100%;
+
+      &:not(:hover):not(:active),
+      &:backdrop {
+        > image {
+          opacity: $_placesidebar_icons_opacity;
+        }
+      }
+    }
+
+    // in the sidebar case it makes no sense to click the selected row
+    &:selected:active {
+      box-shadow: none;
+    }
+
+    &.sidebar-placeholder-row {
+      padding: 0 8px;
+      min-height: 2px;
+      background-image: image($drop_target_color);
+      background-clip: content-box;
+    }
+
+    &.sidebar-new-bookmark-row {
+      color: $selected_bg_color;
+    }
+
+    &:drop(active):not(:disabled) {
+      color: $drop_target_color;
+      box-shadow: inset 0 1px $drop_target_color,
+        inset 0 -1px $drop_target_color;
+
+      &:selected {
+        color: $selected_fg_color;
+        background-color: $drop_target_color;
+      }
+    }
+  }
+}
+
+placesview {
+  .server-list-button > image {
+    transition: 200ms $ease-out-quad;
+    -gtk-icon-transform: rotate(0turn);
+  }
+
+  .server-list-button:checked > image {
+    transition: 200ms $ease-out-quad;
+    -gtk-icon-transform: rotate(-0.5turn);
+  }
+
+  row.activatable:hover {
+    background-color: transparent;
+  }
+
+  /*
+  > actionbar > revealer > box > box {
+    // border-spacing: 6px;
+  }
+  */
+}
+
+/*****************
+ * Color Chooser *
+ *****************/
+colorswatch {
+  // This widget is made of two boxes one on top of the other, the lower box is colorswatch {} the other one
+  // is colorswatch overlay {}, colorswatch has the programmatically set background, so most of the style is
+  // applied to the overlay box.
+
+  &:drop(active),
+  & {
+    border-style: none;
+  } // FIXME: implement a proper drop(active) state
+
+  $_colorswatch_radius: 0px;
+
+  // base color corners rounding
+  // to avoid the artifacts caused by rounded corner anti-aliasing the base color
+  // sports a bigger radius.
+  // nth-child is needed by the custom color strip.
+
+  &.top {
+    border-top-left-radius: $_colorswatch_radius + 0.5px;
+    border-top-right-radius: $_colorswatch_radius + 0.5px;
+
+    overlay {
+      border-top-left-radius: $_colorswatch_radius;
+      border-top-right-radius: $_colorswatch_radius;
+    }
+  }
+
+  &.bottom {
+    border-bottom-left-radius: $_colorswatch_radius + 0.5px;
+    border-bottom-right-radius: $_colorswatch_radius + 0.5px;
+
+    overlay {
+      border-bottom-left-radius: $_colorswatch_radius;
+      border-bottom-right-radius: $_colorswatch_radius;
+    }
+  }
+
+  &.left,
+  &:first-child:not(.top) {
+    border-top-left-radius: $_colorswatch_radius + 0.5px;
+    border-bottom-left-radius: $_colorswatch_radius + 0.5px;
+
+    overlay {
+      border-top-left-radius: $_colorswatch_radius;
+      border-bottom-left-radius: $_colorswatch_radius;
+    }
+  }
+
+  &.right,
+  &:last-child:not(.bottom) {
+    border-top-right-radius: $_colorswatch_radius + 0.5px;
+    border-bottom-right-radius: $_colorswatch_radius + 0.5px;
+
+    overlay {
+      border-top-right-radius: $_colorswatch_radius;
+      border-bottom-right-radius: $_colorswatch_radius;
+    }
+  }
+
+  &.dark {
+    outline-color: transparentize(white, 0.4);
+
+    overlay {
+      color: white;
+
+      &:hover {
+        border-color: $borders_color;
+      }
+
+      &:backdrop {
+        color: transparentize(white, 0.5);
+      }
+    }
+  }
+
+  &.light {
+    outline-color: transparentize(black, 0.4);
+
+    overlay {
+      color: black;
+
+      &:hover {
+        border-color: $borders_color;
+      }
+
+      &:backdrop {
+        color: transparentize(black, 0.5);
+      }
+    }
+  }
+
+  &:drop(active) {
+    box-shadow: none;
+
+    &.light overlay {
+      border-color: $drop_target_color;
+      box-shadow: inset 0 0 0 2px $borders_color,
+        inset 0 0 0 1px $drop_target_color;
+    }
+
+    &.dark overlay {
+      border-color: $drop_target_color;
+      box-shadow: inset 0 0 0 2px $borders_color,
+        inset 0 0 0 1px $drop_target_color;
+    }
+  }
+
+  overlay {
+    border: 1px solid$borders_color;
+
+    &:hover {
+      box-shadow: inset 0 1px transparentize(white, 0.6),
+        inset 0 -1px transparentize(black, 0.8);
+    }
+
+    &:backdrop,
+    &:backdrop:hover {
+      border-color: $borders_color;
+      box-shadow: none;
+    }
+  }
+
+  &#add-color-button {
+    border-radius: $_colorswatch_radius 0 0 $_colorswatch_radius;
+
+    &:only-child {
+      border-radius: $_colorswatch_radius;
+    }
+
+    overlay {
+      @include button(normal);
+
+      &:hover {
+        @include button(hover);
+      }
+
+      &:backdrop {
+        @include button(backdrop);
+      }
+    }
+  }
+
+  &:disabled {
+    opacity: 0.5;
+
+    overlay {
+      border-color: transparentize(black, 0.4);
+      box-shadow: none;
+    }
+  }
+
+  row:selected & {
+    box-shadow: 0 0 0 2px $selected_fg_color;
+  }
+
+  &#editor-color-sample {
+    border-radius: 4px;
+
+    overlay {
+      border-radius: 4.5px;
+    }
+  }
+}
+
+// colorscale popup
+colorchooser .popover.osd {
+  border-radius: 5px;
+}
+
+/*********
+ * Emoji *
+ ********/
+
+popover.emoji-picker {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+button.emoji-section {
+  border-color: transparent;
+  border-width: 3px;
+  border-style: none none solid;
+  border-radius: 0;
+
+  margin: 2px 4px 2px 4px;
+  padding: 3px 0 0;
+  min-width: 32px;
+  min-height: 28px;
+
+  /* reset props inherited from the button style */
+  background: none;
+  box-shadow: none;
+  text-shadow: none;
+
+  outline-offset: -5px;
+
+  &:backdrop:not(:checked) {
+    border-color: transparent;
+  }
+  &:hover {
+    border-color: $borders_color;
+  }
+  &:checked {
+    border-color: $focus_color;
+  }
+
+  label {
+    padding: 0;
+
+    opacity: 0.55;
+  }
+
+  &:hover label {
+    opacity: 0.775;
+  }
+  &:checked label {
+    opacity: 1;
+  }
+}
+
+popover.emoji-picker .emoji {
+  font-size: x-large;
+  padding: 6px;
+  border-radius: 6px;
+
+  :hover {
+    background: $selected_bg_color;
+  }
+}
+
+popover.emoji-completion contents row box {
+  // border-spacing: 10px;
+  padding: 2px 10px;
+}
+
+popover.emoji-completion .emoji:hover {
+  background-color: $popover_hover_color;
+}
+
+popover.entry-completion contents {
+  padding: 0;
+}

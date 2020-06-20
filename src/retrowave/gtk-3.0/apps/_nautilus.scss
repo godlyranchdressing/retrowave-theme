@@ -14,12 +14,12 @@
 
 .nautilus-canvas-item.dim-label,
 .nautilus-list-dim-label {
-  color: mix ($fg_color, $bg_color, 0.5);
+  color: mix($fg_color, $bg_color, 0.5);
 }
 
 .nautilus-canvas-item.dim-label:selected,
 .nautilus-list-dim-label:selected {
-  color: mix ($selected_fg_color, $selected_bg_color, 0.2);
+  color: mix($selected_fg_color, $selected_bg_color, 0.2);
 }
 
 /* Toolbar */

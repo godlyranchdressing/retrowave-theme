@@ -1,0 +1,61 @@
+/***************
+ * Popovers   *
+ ***************/
+
+popover.background {
+  font: initial; // Decouple the font of popovers from their entry/textview
+
+  > arrow,
+  > contents {
+    @extend %background;
+    border: 1px solid $borders_color;
+    box-shadow: 0 1px 2px transparentize(black, 0.7);
+
+    &:backdrop {
+      background-color: $backdrop_bg_color;
+      border-color: $backdrop_borders_color;
+      box-shadow: none;
+    }
+  }
+
+  > contents {
+    padding: 8px;
+    border-radius: $popover_radius;
+
+    > list,
+    > .view,
+    > toolbar {
+      border-style: none;
+      background-color: transparent;
+    }
+
+    separator {
+      margin: 3px;
+    }
+
+    list separator {
+      margin: 0;
+    }
+  }
+
+  .osd &,
+  &.touch-selection,
+  &.magnifier {
+    background-color: transparent;
+
+    > arrow,
+    > contents {
+      @extend %osd;
+
+      border: 1px solid transparentize(white, 0.9);
+      box-shadow: none;
+    }
+  }
+
+  &.touch-selection,
+  &.magnifier {
+    button {
+      @extend %osd_button;
+    }
+  }
+}

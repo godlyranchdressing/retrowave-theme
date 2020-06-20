@@ -1,0 +1,112 @@
+/**********************
+ * Window Decorations *
+ *********************/
+decoration {
+  border-radius: $window_radius $window_radius 0 0;
+  // lamefun trick to get rounded borders regardless of CSD use
+  border-width: 0px;
+
+  // this needs to be transparent
+  // see bug #722563
+  $_wm_border: transparentize($borders_color, 0.1);
+  $_wm_border_backdrop: transparentize($borders_color, 0.1);
+
+  box-shadow: 0 3px 9px 1px transparentize(black, 0.5), 0 0 0 1px $_wm_border; //doing borders with box-shadow
+
+  // FIXME rationalize shadows
+
+  // this is used for the resize cursor area
+  margin: 10px;
+
+  &:backdrop {
+    // the transparent shadow here is to enforce that the shadow extents don't
+    // change when we go to backdrop, to prevent jumping windows.
+    // The biggest shadow should be in the same order then in the active state
+    // or the jumping will happen during the transition.
+    box-shadow: 0 3px 9px 1px transparent,
+      0 2px 6px 2px transparentize(black, 0.8), 0 0 0 1px $_wm_border_backdrop;
+    transition: $backdrop_transition;
+  }
+
+  .maximized &,
+  .fullscreen &,
+  .tiled &,
+  .tiled-top &,
+  .tiled-left &,
+  .tiled-right &,
+  .tiled-bottom & {
+    border-radius: 0;
+    border-width: 0px;
+  }
+
+  .popup & {
+    box-shadow: none;
+  }
+
+  // server-side decorations as used by mutter
+  .ssd & {
+    box-shadow: 0 0 0 1px $_wm_border;
+  } //just doing borders, wm draws actual shadows
+
+  .csd.popup & {
+    border-radius: $menu_radius;
+    box-shadow: 0 1px 2px transparentize(black, 0.8),
+      0 0 0 1px transparentize($_wm_border, 0.1);
+  }
+
+  tooltip.csd & {
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  messagedialog.csd & {
+    border-radius: $window_radius;
+    box-shadow: 0 1px 2px transparentize(black, 0.8),
+      0 0 0 1px transparentize($_wm_border, 0.1);
+  }
+
+  .solid-csd & {
+    margin: 0;
+    padding: 4px;
+    background-color: $borders_color;
+    border: solid 1px $borders_color;
+    border-radius: 0;
+    box-shadow: inset 0 0 0 3px $headerbar_color, inset 0 1px $top_hilight;
+
+    &:backdrop {
+      box-shadow: inset 0 0 0 3px $backdrop_bg_color, inset 0 1px $top_hilight;
+    }
+  }
+}
+
+// Window Close button
+button.titlebutton {
+  @extend %button_basic;
+
+  @include _button_text_shadow;
+
+  &:not(:last-child) {
+    margin-right: -6px;
+  }
+
+  .selection-mode & {
+    @extend %button.flat.suggested-action;
+
+    @extend %nobg_selected_items;
+  }
+
+  &:backdrop {
+    -gtk-icon-shadow: none;
+  }
+}
+
+.selection-mode headerbar button.titlebutton,
+.selection-mode .titlebar button.titlebutton,
+headerbar.selection-mode button.titlebutton,
+.titlebar.selection-mode button.titlebutton {
+  @include _button_text_shadow(white, $selected_bg_color);
+
+  &:backdrop {
+    -gtk-icon-shadow: none;
+  }
+}

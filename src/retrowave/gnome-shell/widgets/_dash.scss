@@ -52,7 +52,12 @@ $dash_border_radius: $modal_radius * 1.5;
   }
 
   & .overview-icon StIcon {
-    @include use_background_image("button", "normal", $reset: true, $size: 52px);
+    @include use_background_image(
+      "button",
+      "normal",
+      $reset: true,
+      $size: 52px
+    );
   }
 
   &:hover .overview-icon StIcon {

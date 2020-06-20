@@ -1,0 +1,19 @@
+/*********************
+ * App Notifications *
+ *********************/
+.app-notification,
+.app-notification.frame {
+  @extend tooltip;
+  label {
+    margin-left: 10px;
+  } // odd alignment?
+
+  &:backdrop {
+    background-image: none;
+    transition: $backdrop_transition;
+  }
+
+  button {
+    @extend %osd_button;
+  }
+}

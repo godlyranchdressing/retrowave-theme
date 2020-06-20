@@ -1,0 +1,104 @@
+/*************
+ * Level Bar *
+ *************/
+
+$levelbar_size: 12px;
+$levelbar_border_radius: 0px;
+
+levelbar {
+  &.horizontal {
+    block {
+      border: 1px solid;
+      min-height: $levelbar_size;
+      border-radius: $levelbar_border_radius;
+
+      &:dir(rtl) {
+        border-radius: 0 $levelbar_border_radius $levelbar_border_radius 0;
+      }
+
+      &:dir(ltr) {
+        border-radius: $levelbar_border_radius 0 0 $levelbar_border_radius;
+      }
+
+      &.empty,
+      &.full {
+        border-radius: $levelbar_border_radius;
+      }
+    }
+
+    &.discrete block {
+      min-height: $levelbar_size - 7px;
+      margin: 0 1px;
+      min-width: 32px;
+      border-radius: $levelbar_border_radius;
+    }
+  }
+
+  &.vertical {
+    block {
+      min-width: $levelbar_size;
+      border-radius: $levelbar_border_radius;
+    }
+
+    &.discrete block {
+      min-width: $levelbar_size - 7px;
+      margin: 1px 0;
+      min-height: 32px;
+    }
+  }
+
+  &:backdrop {
+    transition: $backdrop_transition;
+  }
+
+  // trough
+  trough {
+    padding: 0;
+  }
+
+  // level bar colours
+  block {
+    &.low {
+      $c: $warning_color;
+      @include highlight_color($c, $c);
+      box-shadow: _glow($c1: $c);
+
+      border-color: $borders_color;
+      &:backdrop {
+        border-color: $backdrop_borders_color;
+      }
+    }
+
+    &.high,
+    &:not(.empty) {
+      $c: $focus_color;
+      @include highlight_color($c, $c);
+      box-shadow: _glow($c1: $c);
+
+      border-color: $borders_color;
+      &:backdrop {
+        border-color: $backdrop_borders_color;
+      }
+    }
+
+    &.full {
+      $c: $success_color;
+      @include highlight_color($c, $c);
+      box-shadow: _glow($c1: $c);
+
+      border-color: $borders_color;
+      &:backdrop {
+        border-color: $backdrop_borders_color;
+      }
+    }
+
+    &.empty {
+      background-color: $dark_fill;
+      border-color: $borders_color;
+      &:backdrop {
+        border-color: $backdrop_borders_color;
+        background-color: $dark_fill;
+      }
+    }
+  }
+}

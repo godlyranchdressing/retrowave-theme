@@ -3,7 +3,7 @@
 #overview {
   spacing: 24px;
 
-  @if ($glow == true) {
+  @if ($glow) {
     $c1: $neon_pink;
     $c2: $neon_blue;
     background-gradient-direction: horizontal;

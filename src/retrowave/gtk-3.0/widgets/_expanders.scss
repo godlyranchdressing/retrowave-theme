@@ -1,0 +1,26 @@
+/*************
+ * Expanders *
+ *************/
+expander {
+  min-width: 16px;
+  min-height: 16px;
+  -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
+  &:dir(rtl) {
+    -gtk-icon-source: -gtk-icontheme("pan-end-symbolic-rtl");
+  }
+
+  &:disabled {
+    color: $insensitive_fg_color;
+  }
+  &:disabled:backdrop {
+    color: $backdrop_insensitive_color;
+  }
+
+  &:checked {
+    -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+  }
+}
+
+expander-widget title:hover > expander {
+  color: lighten($fg_color, 30%); //only lightens the icon
+}

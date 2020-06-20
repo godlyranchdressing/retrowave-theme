@@ -1,0 +1,47 @@
+/**************
+ * ComboBoxes *
+ **************/
+combobox {
+  arrow {
+    -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+    min-height: 16px;
+    min-width: 16px;
+  }
+
+  &.linked {
+    button:nth-child(2) {
+      @extend %linked:not(:first-child);
+    }
+  }
+
+  &:drop(active) {
+    // FIXME: untested
+    box-shadow: none;
+
+    button.combo {
+      @extend %button_basic:drop(active);
+    }
+  }
+}
+
+// the combo is a composite widget so the way we do button linking doesn't
+// work, special case needed. See
+// https://bugzilla.gnome.org/show_bug.cgi?id=733979
+
+.linked:not(.vertical) > combobox {
+  &:not(:first-child) > box > button.combo {
+    @extend %linked:not(:first-child);
+  }
+  &:not(:last-child) > box > button.combo {
+    @extend %linked:not(:last-child);
+  }
+}
+
+.linked.vertical > combobox {
+  &:not(:first-child) > box > button.combo {
+    @extend %linked_vertical:not(:first-child);
+  }
+  &:not(:last-child) > box > button.combo {
+    @extend %linked_vertical:not(:last-child);
+  }
+}
