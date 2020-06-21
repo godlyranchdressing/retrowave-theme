@@ -14,7 +14,8 @@
 
 .nautilus-canvas-item.dim-label,
 .nautilus-list-dim-label {
-  color: mix($fg_color, $bg_color, 0.5);
+  // color: mix($fg_color, $bg_color, 0.5);
+  color: mix($text_color, $bg_color);
 }
 
 .nautilus-canvas-item.dim-label:selected,
@@ -28,7 +29,7 @@
  * since is not possible to use lighten () in common css. */
 @keyframes needs_attention_keyframes {
   0% {
-    background-image: linear-gradient(to bottom, #fafafa, #ededed 40%, #e0e0e0);
+    background-image: linear-gradient(to bottom, $bg_color, $base_color);
     border-color: $borders_color;
   }
   /* can't do animation-direction, so holding the color on two keyframes */
@@ -51,7 +52,7 @@
     border-color: $fg_color;
   }
   100% {
-    background-image: linear-gradient(to bottom, #fafafa, #ededed 40%, #e0e0e0);
+    background-image: linear-gradient(to bottom, $bg_color, $base_color);
     border-color: $borders_color;
   }
 }
@@ -232,7 +233,7 @@ flowboxchild:selected {
 
 .icon-background {
   background-color: black;
-  border-color: #4a90d9;
+  border-color: $selected_bg_color;
   border-style: solid;
   border-width: 0px;
 }
@@ -242,8 +243,8 @@ flowboxchild > .icon-item-background {
 }
 flowboxchild:selected > .icon-item-background {
   padding: 4px;
-  background-color: #4a90d9;
-  border-color: #4a90d9;
+  background-color: $selected_bg_color;
+  border-color: $selected_bg_color;
   border-style: solid;
   border-width: 0px;
   border-radius: 4px 4px 4px 4px;
