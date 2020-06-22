@@ -447,32 +447,3 @@ assistant {
 .monospace {
   font-family: monospace;
 }
-
-decoration {
-  // for window frame
-  border: 4px solid;
-  background-color: $base_color;
-  border-image: url("assets/window.svg") 7;
-
-  &:backdrop {
-    border-image: url("assets/window-backdrop.svg") 7;
-  }
-}
-
-tooltip {
-  &,
-  &.background {
-    background-color: black;
-    border: 1px solid #555;
-    box-shadow: 0 0 0 1px #ccc;
-    color: $osd_fg_color;
-  }
-}
-
-popover,
-popover.background {
-  &,
-  &:not(.anything-else) {
-    border: 1px solid $borders_color;
-  }
-}
