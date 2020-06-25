@@ -202,7 +202,10 @@ radio {
 
 %check,
 check {
-  -gtk-icon-size: 14px;
+  & {
+    // see the icon_sizing mixin
+    // -gtk-icon-size: 14px;
+  }
 
   &:checked {
     -gtk-icon-source: -gtk-recolor(url("assets/check.svg"));
@@ -216,7 +219,8 @@ check {
 %radio,
 radio {
   border-radius: 100%;
-  -gtk-icon-size: 14px;
+  // see the icon_sizing mixin
+  // -gtk-icon-size: 14px;
 
   &:checked {
     -gtk-icon-source: -gtk-recolor(url("assets/bullet.svg"));

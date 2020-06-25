@@ -51,7 +51,7 @@ button {
 
     &:hover {
       @include button(hover);
-      -gtk-icon-filter: brightness(1.2);
+      // -gtk-icon-filter: brightness(1.2);
     }
 
     &:active,
@@ -67,7 +67,7 @@ button {
         @include button(backdrop);
 
         transition: $backdrop_transition;
-        -gtk-icon-filter: none;
+        // -gtk-icon-filter: none;
 
         &:active,
         &:checked {

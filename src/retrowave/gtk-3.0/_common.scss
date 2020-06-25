@@ -29,7 +29,7 @@ flowboxchild:focus {
   // and we don't use any outlines for now.
   outline-color: $selected_bg_color;
   outline-style: dashed;
-  outline-offset: -3px;
+  outline-offset: -3px; // gives a warning but it works so..?
   outline-width: 1px;
   -gtk-outline-radius: $button-radius - 2;
 }
@@ -59,16 +59,21 @@ window {
   }
 }
 
-.normal-icons {
-  -gtk-icon-size: 16px;
-}
+@mixin icon_sizing() {
+  // these give css warnings
+  // not sure if they're used or what they're for
+  // putting them in a mixin to keep them around for now
+  .normal-icons {
+    -gtk-icon-size: 16px;
+  }
 
-.large-icons {
-  -gtk-icon-size: 32px;
-}
+  .large-icons {
+    -gtk-icon-size: 32px;
+  }
 
-image.drag-icon {
-  -gtk-icon-size: 32px;
+  image.drag-icon {
+    -gtk-icon-size: 32px;
+  }
 }
 
 /*
@@ -79,7 +84,17 @@ image.drag-icon {
 */
 
 *:disabled {
-  -gtk-icon-filter: opacity(0.5);
+  // -gtk-icon-filter: opacity(0.5);
+}
+
+button:disabled {
+  // if using a gtk icon and you're disabled
+  // then adjust opacity so they look disabled
+  &, &:backdrop {
+    image {
+      opacity: 0.6;
+    }
+  }
 }
 
 .gtkstyle-fallback {

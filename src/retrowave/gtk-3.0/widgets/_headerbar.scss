@@ -90,7 +90,7 @@ headerbar {
         & {
           @include button(backdrop, $selected_bg_color, $selected_fg_color);
 
-          -gtk-icon-filter: none;
+          // -gtk-icon-filter: none;
           border-color: $selected_borders_color;
 
           &:active,

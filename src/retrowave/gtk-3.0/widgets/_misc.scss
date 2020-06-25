@@ -6,7 +6,7 @@
   background-color: darken($bg_color, 7%);
 
   &:hover {
-    -gtk-icon-filter: brightness(1.2);
+    // -gtk-icon-filter: brightness(1.2);
   }
 
   &:backdrop {
