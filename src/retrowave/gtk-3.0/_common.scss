@@ -303,10 +303,10 @@ assistant {
     }
 
     &:backdrop {
-      color: $backdrop_selected_fg_color;
+      color: $fg_color;
 
       &:disabled {
-        color: mix($backdrop_selected_fg_color, $selected_bg_color, 30%);
+        color: mix($fg_color, $selected_bg_color, 30%);
       }
     }
   }

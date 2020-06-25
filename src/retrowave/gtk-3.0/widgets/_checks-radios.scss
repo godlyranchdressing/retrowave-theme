@@ -141,6 +141,9 @@ radio {
         $d: "to bottom"
       );
       box-shadow: none;
+      @if ($glow) {
+        animation: none;
+      }
     }
   }
   &:checked:backdrop {

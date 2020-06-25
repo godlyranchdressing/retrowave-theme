@@ -11,7 +11,7 @@
 
   &:backdrop {
     background-color: $backdrop_dark_fill;
-    border-color: $backdrop_dark_fill;
+    border-color: $backdrop_borders_color;
     transition: $backdrop_transition;
 
     &:disabled {
