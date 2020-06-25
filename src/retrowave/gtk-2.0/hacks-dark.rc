@@ -5,8 +5,8 @@
 
 style "dark_insensitive" {
 
-  fg[INSENSITIVE]   = insensitive_bg_color
-  text[INSENSITIVE] = insensitive_bg_color
+  fg[INSENSITIVE]   = @insensitive_fg_color
+  text[INSENSITIVE] = @insensitive_fg_color
 
 }
 

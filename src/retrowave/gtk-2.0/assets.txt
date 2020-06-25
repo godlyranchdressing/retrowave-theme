@@ -7,7 +7,6 @@ checkbox-unchecked-hover
 checkbox-unchecked-active
 checkbox-unchecked-insensitive
 checkbox-mixed
-checkbox-mixed-hover
 checkbox-mixed-active
 checkbox-mixed-insensitive
 radio-checked
@@ -19,7 +18,6 @@ radio-unchecked-hover
 radio-unchecked-active
 radio-unchecked-insensitive
 radio-mixed
-radio-mixed-hover
 radio-mixed-active
 radio-mixed-insensitive
 menu-pan-left
