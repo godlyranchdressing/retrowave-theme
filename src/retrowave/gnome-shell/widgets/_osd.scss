@@ -27,6 +27,8 @@ $osd_levelbar_height: 8px;
     -barlevel-active-background-color: $focus_color;
     -barlevel-overdrive-color: $destructive_color;
     -barlevel-overdrive-separator-width: 3px;
+    -barlevel-border-width: 1px;
+    -barlevel-border-color: $borders_color;
   }
 }
 

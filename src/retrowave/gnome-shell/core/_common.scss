@@ -84,6 +84,15 @@ stage {
   color: $osd_fg_color;
 }
 
+// Window caption and dash tooltip
+%tooltip {
+  @include use_border_image("background", "tooltip", $reset: true, $slice: 5);
+  color: $selected_fg_color;
+  padding: $base_padding $base_padding * 2;
+  font-weight: bold;
+  text-align: center;
+}
+
 // osd panels
 %osd_panel {
   @include use_border_image("background", "light_is_around", $reset: true);

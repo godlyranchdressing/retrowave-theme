@@ -3,6 +3,8 @@
 // generic drawing of more complex things
 
 @mixin tab_background(
+  // draws the tab background as a background image
+  // so we can get the nice gradient (box shadow can't do gradients)
   $d1,
   $d2,
   $bg: $tab_active_color,
@@ -27,6 +29,7 @@
   $alpha: 0.75,
   $blur: 4px
 ) {
+  // blurs and transparentizes a color so it'll appear to "glow"
   @if ($both) {
     @return 0 2px $blur 0 transparentize($c1, $alpha),
       0 -2px $blur 0 transparentize($c2, $alpha);
@@ -46,9 +49,7 @@
 }
 
 @mixin _shadows($list...) {
-  //
-  // Helper mixin to stack up to box-shadows;
-  //
+  // mixin to stack box-shadows;
   $shadows: null;
 
   @each $shadow in $list {
@@ -66,7 +67,6 @@
 }
 
 @mixin entry($t, $fc: $focus_color) {
-  //
   // Entries drawing function
   //
   // $t: entry type
@@ -117,6 +117,7 @@
 // buttons
 
 @function _border_color($c, $darker: false) {
+  // darkens a color for it to be used as a border
   @if $darker == true {
     @return darken($c, 20%);
   } @else {
@@ -140,26 +141,8 @@
 }
 
 @function _button_hilight_color($c) {
-  //
   // calculate the right top hilight color for buttons
-  //
-  // $c: base color;
-  //
-  /*
-  @if lightness($c) >95% {
-    @return white;
-  } @else if lightness($c) >90% {
-    @return mix($c, white, 0.2);
-  } @else if lightness($c) >80% {
-    @return mix($c, white, 0.5);
-  } @else if lightness($c) >50% {
-    @return mix($c, white, 0.8);
-  } @else if lightness($c) >40% {
-    @return mix($c, white, 0.9);
-  } @else {
-    @return mix($c, white, 0.2);
-  }
-  */
+  // $c: button bg color
 
   @if lightness($c) >30% {
     @return lighten($c, 10%);
@@ -171,6 +154,9 @@
 }
 
 @function _button_lowlight_color($c) {
+  // calculate the bottom left border colors for buttons
+  // $c: button bg color
+
   @if lightness($c) >30% {
     @return $borders_color;
   } @else if lightness($c) >50% {
@@ -206,9 +192,7 @@
   // possible $t values:
   // normal, hover, active, insensitive, insensitive-active,
   // backdrop, backdrop-active, backdrop-insensitive, backdrop-insensitive-active,
-  // osd, osd-hover, osd-active, osd-insensitive, osd-backdrop, undecorated
   //
-  // This mixin sets the $button_fill global variable which containts the button background-image
   //
   $_glow: if($glow, _glow($c), none);
   $_hilight_color: _button_hilight_color($c);
